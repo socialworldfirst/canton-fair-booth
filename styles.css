@@ -1,0 +1,850 @@
+/* ═══════════════════════════════════════════════════════
+   Canton Fair Booth — 16:9 Interactive TV Display
+   ═══════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: #0a0015;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: manipulation;
+}
+
+/* ── CSS Variables ── */
+:root {
+  --wf-red: #FF0051;
+  --wf-red-glow: rgba(255, 0, 81, 0.3);
+  --bg-deep: #0a0015;
+  --bg-mid: #120020;
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-hover: rgba(255, 255, 255, 0.14);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+  --text-muted: rgba(255, 255, 255, 0.4);
+  --side-pad: 3.5vw;
+  --card-gap: 12px;
+  --radius-sm: 0.6vh;
+  --radius-md: 1.2vh;
+  --radius-lg: 1.8vh;
+}
+
+/* ── App Container ── */
+#app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ═══ VIEW SYSTEM ═══ */
+.view {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  transform: translateX(4vw);
+}
+
+.view.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.view.exit-left {
+  transform: translateX(-4vw);
+}
+
+/* ═══ MAIN VIEW BACKGROUND ═══ */
+#main-view {
+  background:
+    radial-gradient(ellipse at 30% 15%, rgba(255, 0, 81, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 85%, rgba(74, 100, 217, 0.03) 0%, transparent 50%),
+    linear-gradient(180deg, #130022 0%, #0a0015 45%, #0d0018 100%);
+}
+
+/* ═══ TOP BAR ═══ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--side-pad);
+  height: 7vh;
+  flex-shrink: 0;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2vw;
+}
+
+.wf-logo {
+  height: 3.2vh;
+  width: auto;
+  opacity: 0.9;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 2.4vh;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-title {
+  font-size: clamp(10px, 1.3vh, 16px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+}
+
+.canton-badge {
+  font-size: clamp(10px, 1.3vh, 14px);
+  font-weight: 600;
+  padding: 0.5vh 1.6vw;
+  border: 1.5px solid var(--wf-red);
+  border-radius: 50px;
+  color: var(--wf-red);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ═══ HEADLINE AREA ═══ */
+.headline-area {
+  text-align: center;
+  padding: 1.5vh var(--side-pad) 2vh;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.main-headline {
+  font-size: clamp(28px, 5.5vh, 72px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 1vh;
+}
+
+.accent {
+  color: var(--wf-red);
+}
+
+.main-subtitle {
+  font-size: clamp(14px, 2vh, 24px);
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-bottom: 1.8vh;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5vw;
+}
+
+.stat {
+  font-size: clamp(10px, 1.3vh, 15px);
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+/* ═══ CAROUSEL ═══ */
+.carousel-section {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  padding: 0.5vh 1vw;
+  position: relative;
+  min-height: 0;
+}
+
+.carousel-track-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  margin: 0 0.5vw;
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--card-gap);
+  height: 100%;
+  align-items: center;
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.nav-arrow {
+  align-self: center;
+}
+
+/* ── City Cards ── */
+.carousel-card {
+  flex-shrink: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.carousel-card:hover,
+.carousel-card:active {
+  transform: scale(1.04);
+  box-shadow: 0 2vh 5vh rgba(0, 0, 0, 0.4), 0 0 3vh var(--wf-red-glow);
+}
+
+.carousel-card.active-city {
+  box-shadow: 0 0 0 2px var(--wf-red), 0 1vh 3vh rgba(255, 0, 81, 0.15);
+}
+
+.carousel-card.active-city:hover {
+  box-shadow: 0 0 0 2px var(--wf-red), 0 2vh 5vh rgba(0, 0, 0, 0.4), 0 0 4vh var(--wf-red-glow);
+}
+
+.card-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+
+.carousel-card:hover .card-image {
+  transform: scale(1.08);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45) 0%,
+    transparent 35%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  transition: background 0.3s ease;
+}
+
+.carousel-card:hover .card-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    transparent 25%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+
+.card-categories {
+  position: absolute;
+  top: 1.2vh;
+  left: 1.2vh;
+  right: 1.2vh;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4vh;
+}
+
+.card-cat-pill {
+  font-size: clamp(8px, 1.1vh, 13px);
+  padding: 0.25vh 0.8vh;
+  background: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.card-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.8vh;
+}
+
+.card-city-name {
+  font-size: clamp(16px, 2.5vh, 30px);
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.01em;
+  transition: transform 0.3s ease;
+}
+
+.carousel-card:hover .card-city-name {
+  transform: translateY(-2.8vh);
+}
+
+.card-cta {
+  position: absolute;
+  bottom: 1.8vh;
+  left: 1.8vh;
+  display: flex;
+  align-items: center;
+  gap: 0.5vh;
+  font-size: clamp(10px, 1.3vh, 15px);
+  font-weight: 500;
+  color: white;
+  opacity: 0;
+  transform: translateY(1vh);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-card:hover .card-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-cta-explore {
+  color: var(--wf-red);
+  font-weight: 600;
+}
+
+.card-active-dot {
+  position: absolute;
+  top: 1.2vh;
+  right: 1.2vh;
+  width: 1vh;
+  height: 1vh;
+  border-radius: 50%;
+  background: var(--wf-red);
+  box-shadow: 0 0 0.8vh var(--wf-red-glow);
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0.8vh var(--wf-red-glow); }
+  50% { opacity: 0.6; box-shadow: 0 0 1.5vh var(--wf-red-glow); }
+}
+
+/* ── Nav Arrows ── */
+.nav-arrow {
+  width: clamp(36px, 5vh, 56px);
+  height: clamp(36px, 5vh, 56px);
+  border-radius: 50%;
+  border: 1.5px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.nav-arrow:hover {
+  background: var(--wf-red);
+  border-color: var(--wf-red);
+  box-shadow: 0 0 2vh var(--wf-red-glow);
+}
+
+.nav-arrow:active {
+  transform: scale(0.92);
+}
+
+/* ═══ BOTTOM BAR ═══ */
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--side-pad);
+  height: 9vh;
+  flex-shrink: 0;
+}
+
+.bottom-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2vw;
+}
+
+.qr-frame {
+  width: 6vh;
+  height: 6vh;
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 0.4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-code {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.qr-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2vh;
+}
+
+.qr-label {
+  font-size: clamp(10px, 1.4vh, 16px);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.qr-url {
+  font-size: clamp(8px, 1.1vh, 13px);
+  color: var(--text-muted);
+}
+
+.bottom-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
+}
+
+.powered-by {
+  font-size: clamp(8px, 1.1vh, 13px);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.wf-logo-small {
+  height: 2.4vh;
+  width: auto;
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GUANGZHOU DETAIL VIEW
+   ═══════════════════════════════════════════════════════ */
+.city-bg {
+  position: absolute;
+  inset: -20px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px) brightness(0.6);
+  transform: scale(1.05);
+}
+
+.city-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 0, 21, 0.93) 0%,
+    rgba(19, 0, 45, 0.88) 40%,
+    rgba(10, 0, 21, 0.95) 100%
+  );
+}
+
+.city-top-bar {
+  position: relative;
+  z-index: 2;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6vw;
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 0.7vh 1.4vw;
+  color: white;
+  font-size: clamp(10px, 1.3vh, 15px);
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.back-btn:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.back-btn:active {
+  transform: scale(0.96);
+}
+
+/* ── City Content ── */
+.city-content {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5vh var(--side-pad) 1vh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.city-header {
+  text-align: center;
+  flex-shrink: 0;
+  margin-bottom: 2vh;
+}
+
+.city-badge {
+  display: inline-block;
+  font-size: clamp(9px, 1.1vh, 13px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--wf-red);
+  border: 1.5px solid rgba(255, 0, 81, 0.5);
+  padding: 0.35vh 1.2vw;
+  border-radius: 50px;
+  margin-bottom: 1vh;
+  background: rgba(255, 0, 81, 0.08);
+}
+
+.city-name {
+  font-size: clamp(32px, 5.5vh, 68px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.8vh;
+}
+
+.city-desc {
+  font-size: clamp(12px, 1.6vh, 20px);
+  color: var(--text-secondary);
+  max-width: 50vw;
+  margin: 0 auto 1.5vh;
+  line-height: 1.5;
+}
+
+.city-facts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+}
+
+.fact {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3vw;
+}
+
+.fact-num {
+  font-size: clamp(14px, 2.2vh, 26px);
+  font-weight: 800;
+  color: var(--wf-red);
+}
+
+.fact-text {
+  font-size: clamp(10px, 1.2vh, 14px);
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.fact-divider {
+  width: 1px;
+  height: 3vh;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ── Categories ── */
+.categories-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.categories-title {
+  font-size: clamp(18px, 2.8vh, 34px);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5vh;
+}
+
+.categories-subtitle {
+  font-size: clamp(10px, 1.3vh, 15px);
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 1.5vh;
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1vh 1vw;
+  max-width: 72vw;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.category-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 1.5vh 1.2vw;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6vh;
+}
+
+.category-card:hover {
+  background: var(--glass-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.cat-name {
+  font-size: clamp(11px, 1.5vh, 17px);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.cat-stars {
+  display: flex;
+  gap: 0.2vh;
+}
+
+.cat-star {
+  width: clamp(10px, 1.3vh, 16px);
+  height: clamp(10px, 1.3vh, 16px);
+}
+
+.cat-star-filled {
+  fill: var(--wf-red);
+  stroke: var(--wf-red);
+}
+
+.cat-star-empty {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.2);
+}
+
+.cat-phase {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3vw;
+  font-size: clamp(8px, 1vh, 12px);
+  font-weight: 600;
+  padding: 0.25vh 0.7vw;
+  border-radius: 50px;
+  width: fit-content;
+  letter-spacing: 0.03em;
+}
+
+.phase-1 {
+  background: rgba(96, 165, 250, 0.15);
+  color: #93C5FD;
+}
+
+.phase-2 {
+  background: rgba(251, 191, 36, 0.15);
+  color: #FCD34D;
+}
+
+.phase-3 {
+  background: rgba(52, 211, 153, 0.15);
+  color: #6EE7B7;
+}
+
+/* City bottom bar */
+.city-bottom-bar {
+  position: relative;
+  z-index: 2;
+}
+
+/* ═══════════════════════════════════════════════════════
+   CITY PREVIEW MODAL
+   ═══════════════════════════════════════════════════════ */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  position: relative;
+  width: 48vw;
+  height: 48vh;
+  border-radius: 2.5vh;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.35s ease;
+  transform: scale(0.92);
+}
+
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 0, 21, 0.6) 0%,
+    rgba(10, 0, 21, 0.92) 100%
+  );
+}
+
+.modal-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 4vh 4vw;
+  text-align: center;
+}
+
+.modal-city-name {
+  font-size: clamp(28px, 5vh, 60px);
+  font-weight: 800;
+  margin-bottom: 2vh;
+  letter-spacing: -0.02em;
+}
+
+.modal-categories {
+  display: flex;
+  gap: 0.8vh;
+  margin-bottom: 2vh;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.modal-cat-pill {
+  font-size: clamp(10px, 1.3vh, 15px);
+  padding: 0.5vh 1.3vw;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font-weight: 500;
+}
+
+.modal-desc {
+  font-size: clamp(12px, 1.6vh, 20px);
+  color: var(--text-secondary);
+  margin-bottom: 2.5vh;
+  max-width: 30vw;
+  line-height: 1.5;
+}
+
+.modal-coming-soon {
+  display: flex;
+  align-items: center;
+  gap: 0.6vw;
+  font-size: clamp(11px, 1.4vh, 17px);
+  font-weight: 600;
+  color: var(--wf-red);
+  padding: 0.8vh 1.8vw;
+  border: 1.5px solid rgba(255, 0, 81, 0.5);
+  border-radius: 50px;
+  background: rgba(255, 0, 81, 0.08);
+  margin-bottom: 1vh;
+}
+
+.modal-scan-hint {
+  font-size: clamp(9px, 1.1vh, 13px);
+  color: var(--text-muted);
+}
+
+.modal-close {
+  position: absolute;
+  top: 2vh;
+  right: 2vh;
+  width: clamp(32px, 4vh, 48px);
+  height: clamp(32px, 4vh, 48px);
+  border-radius: 50%;
+  border: 1.5px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: var(--wf-red);
+  border-color: var(--wf-red);
+}
+
+/* ═══ UTILITY ═══ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
