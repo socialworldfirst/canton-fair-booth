@@ -85,11 +85,20 @@
         0 0 80px rgba(10, 0, 21, 0.4);
     }
 
+    .tv-frame {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .tv-frame iframe {
-      width: 100%;
-      height: 100%;
+      /* Render at native 16:9 resolution, then scale down to fit */
+      width: 1280px;
+      height: 720px;
       border: none;
-      transform-origin: top left;
+      transform-origin: center center;
+      flex-shrink: 0;
+      /* Scale is set dynamically by JS based on actual frame size */
     }
 
     /* ── Calibration controls (hidden by default) ── */
@@ -209,8 +218,24 @@
 
   <script>
     const tvFrame = document.getElementById('tv-frame');
+    const tvIframe = tvFrame.querySelector('iframe');
     const calPanel = document.getElementById('calibration');
     const toggleBtn = document.getElementById('toggle-cal');
+
+    // Scale the 1280x720 iframe to fill the TV frame (cover mode), centered
+    function scaleIframe() {
+      const frameW = tvFrame.clientWidth;
+      const frameH = tvFrame.clientHeight;
+      // Cover: scale to fill both dimensions, overflow hidden clips edges
+      const scale = Math.max(frameW / 1280, frameH / 720);
+      tvIframe.style.transform = `scale(${scale})`;
+    }
+
+    // Run on load and resize
+    window.addEventListener('load', scaleIframe);
+    window.addEventListener('resize', scaleIframe);
+    // Also run after image loads (drives the container size)
+    document.getElementById('booth-image').addEventListener('load', scaleIframe);
 
     toggleBtn.addEventListener('click', () => {
       calPanel.classList.toggle('active');

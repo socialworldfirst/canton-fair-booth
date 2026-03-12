@@ -511,6 +511,7 @@ html, body {
   z-index: 2;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 0.5vh var(--side-pad) 1vh;
   min-height: 0;
   overflow: hidden;
@@ -608,10 +609,10 @@ html, body {
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: min-content;
   gap: 1vh 1vw;
   max-width: 72vw;
   margin: 0 auto;
-  flex: 1;
 }
 
 .category-card {
