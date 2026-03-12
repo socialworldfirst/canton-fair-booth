@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booth Preview — Canton Fair 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏭</text></svg>">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .page-header {
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(10, 0, 21, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .page-title span {
+      color: #FF0051;
+    }
+
+    .page-badge {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border: 1.5px solid #FF0051;
+      border-radius: 50px;
+      color: #FF0051;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Booth Container ── */
+    .booth-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .booth-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* ── Interactive TV Frame ──
+       Positioned to match the center rounded-rectangle screen
+       in the booth render. Adjust these values to fine-tune. */
+    .tv-frame {
+      position: absolute;
+      /* Calibrated to match the center rounded-rectangle screen in the 3D render */
+      top: 12.5%;
+      left: 37.6%;
+      width: 22.8%;
+      height: 75%;
+      border-radius: 7% / 5.5%;
+      overflow: hidden;
+      /* Subtle glow to simulate screen light */
+      box-shadow:
+        0 0 40px rgba(255, 0, 81, 0.15),
+        0 0 80px rgba(10, 0, 21, 0.4);
+    }
+
+    .tv-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transform-origin: top left;
+    }
+
+    /* ── Calibration controls (hidden by default) ── */
+    .calibration {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      gap: 12px;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      padding: 12px 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 100;
+      font-size: 13px;
+    }
+
+    .calibration.active {
+      display: flex;
+    }
+
+    .calibration label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .calibration input[type="range"] {
+      width: 100px;
+      accent-color: #FF0051;
+    }
+
+    .calibration .val {
+      font-family: monospace;
+      color: #FF0051;
+      min-width: 50px;
+    }
+
+    .calibration button {
+      background: #FF0051;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .toggle-calibrate {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.5);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 12px;
+      z-index: 99;
+      transition: all 0.2s;
+    }
+
+    .toggle-calibrate:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      padding: 16px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+      background: rgba(10, 0, 21, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <h1 class="page-title">WorldFirst Booth <span>Interactive Display</span></h1>
+    <span class="page-badge">Canton Fair 2026</span>
+  </header>
+
+  <div class="booth-container" id="booth-container">
+    <img src="images/booth.png" alt="WorldFirst Canton Fair Booth" class="booth-image" id="booth-image">
+
+    <div class="tv-frame" id="tv-frame">
+      <iframe src="index.html" title="Interactive Display"></iframe>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    Booth preview — position the interactive display to match the TV screen
+  </footer>
+
+  <!-- Calibration tool to fine-tune TV frame position -->
+  <button class="toggle-calibrate" id="toggle-cal">Calibrate TV Position</button>
+
+  <div class="calibration" id="calibration">
+    <label>Top <input type="range" id="cal-top" min="0" max="50" step="0.1" value="12.5"><span class="val" id="val-top">12.5%</span></label>
+    <label>Left <input type="range" id="cal-left" min="0" max="70" step="0.1" value="37.6"><span class="val" id="val-left">37.6%</span></label>
+    <label>W <input type="range" id="cal-width" min="10" max="60" step="0.1" value="22.8"><span class="val" id="val-width">22.8%</span></label>
+    <label>H <input type="range" id="cal-height" min="10" max="100" step="0.1" value="75"><span class="val" id="val-height">75%</span></label>
+    <label>R <input type="range" id="cal-radius" min="0" max="10" step="0.1" value="7"><span class="val" id="val-radius">7%</span></label>
+    <button id="copy-css">Copy CSS</button>
+  </div>
+
+  <script>
+    const tvFrame = document.getElementById('tv-frame');
+    const calPanel = document.getElementById('calibration');
+    const toggleBtn = document.getElementById('toggle-cal');
+
+    toggleBtn.addEventListener('click', () => {
+      calPanel.classList.toggle('active');
+    });
+
+    const sliders = {
+      top:    { el: document.getElementById('cal-top'),    val: document.getElementById('val-top'),    prop: 'top',          unit: '%' },
+      left:   { el: document.getElementById('cal-left'),   val: document.getElementById('val-left'),   prop: 'left',         unit: '%' },
+      width:  { el: document.getElementById('cal-width'),  val: document.getElementById('val-width'),  prop: 'width',        unit: '%' },
+      height: { el: document.getElementById('cal-height'), val: document.getElementById('val-height'), prop: 'height',       unit: '%' },
+      radius: { el: document.getElementById('cal-radius'), val: document.getElementById('val-radius'), prop: 'borderRadius', unit: '%' },
+    };
+
+    Object.entries(sliders).forEach(([key, s]) => {
+      s.el.addEventListener('input', () => {
+        const v = s.el.value;
+        s.val.textContent = v + s.unit;
+        if (key === 'radius') {
+          tvFrame.style.borderRadius = `${v}% / ${v}%`;
+        } else {
+          tvFrame.style[s.prop] = v + s.unit;
+        }
+      });
+    });
+
+    document.getElementById('copy-css').addEventListener('click', () => {
+      const css = `top: ${sliders.top.el.value}%; left: ${sliders.left.el.value}%; width: ${sliders.width.el.value}%; height: ${sliders.height.el.value}%; border-radius: ${sliders.radius.el.value}% / ${sliders.radius.el.value}%;`;
+      navigator.clipboard.writeText(css).then(() => {
+        document.getElementById('copy-css').textContent = 'Copied!';
+        setTimeout(() => document.getElementById('copy-css').textContent = 'Copy CSS', 1500);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -8,7 +8,10 @@ const cities = [
     name: "Guangzhou",
     slug: "guangzhou",
     categories: ["Electronics", "Apparel", "Beauty"],
+    topCategories: ["Apparel & Fashion", "Leather Goods", "Beauty & Cosmetics", "Textiles", "Furniture & Home", "Toys & Gifts", "Jewelry", "Electronics Accessories"],
     description: "Canton Fair host city and gateway to the Pearl River Delta manufacturing belt.",
+    longDesc: "China\u2019s oldest trade capital and the Pearl River Delta\u2019s gateway. Home to 8+ wholesale markets within 30 minutes of Canton Fair \u2014 the world\u2019s densest cluster for apparel, leather goods, and beauty products.",
+    wfHook: "Pay Guangzhou suppliers in CNY same-day via World Account \u2014 80% of payments arrive within hours.",
     image: "images/guangzhou.webp",
     hasDetail: true,
   },
@@ -16,7 +19,10 @@ const cities = [
     name: "Shenzhen",
     slug: "shenzhen",
     categories: ["Electronics", "Hardware", "LED"],
+    topCategories: ["Consumer Electronics", "LED & Lighting", "Smart Home", "3C Accessories", "Drones & Robotics", "PCB & Components", "Hardware Startups", "IoT Devices"],
     description: "China\u2019s tech manufacturing powerhouse and hardware startup capital.",
+    longDesc: "The world\u2019s hardware capital. From prototype to mass production in weeks \u2014 Shenzhen\u2019s Huaqiangbei district alone has more electronics suppliers than most countries. Ideal for tech sourcing, custom PCBs, and smart devices.",
+    wfHook: "Lock in USD\u2192CNY rates with WorldFirst Forwards \u2014 protect margins on high-value electronics orders.",
     image: "images/shenzhen.webp",
     hasDetail: false,
   },
@@ -24,7 +30,10 @@ const cities = [
     name: "Dongguan",
     slug: "dongguan",
     categories: ["Electronics", "Toys", "Apparel"],
+    topCategories: ["Electronics Assembly", "Toys & Games", "Apparel & Textiles", "Footwear", "Molds & Tooling", "Precision Parts", "Furniture", "Packaging"],
     description: "The world\u2019s factory floor \u2014 OEM capital for global brands.",
+    longDesc: "The OEM capital of the world. Dongguan\u2019s 10,000+ factories produce everything from Nike shoes to Apple components. Unmatched for contract manufacturing, tooling, and large-volume production runs.",
+    wfHook: "Verify supplier bank accounts against business registrations before sending deposits \u2014 built into every WorldFirst payment.",
     image: "images/dongguan.webp",
     hasDetail: false,
   },
@@ -32,7 +41,10 @@ const cities = [
     name: "Foshan",
     slug: "foshan",
     categories: ["Building", "Furniture", "Ceramics"],
+    topCategories: ["Ceramics & Tiles", "Furniture", "Building Materials", "Lighting Fixtures", "Stainless Steel", "Aluminum Profiles", "Home D\u00e9cor", "Doors & Windows"],
     description: "Building materials and furniture capital of China.",
+    longDesc: "China\u2019s undisputed hub for building materials, ceramics, and furniture. Foshan\u2019s Lecong furniture market and Nanzhuang ceramics district supply construction projects worldwide. Ideal for bulk material sourcing.",
+    wfHook: "Send CNY payments to multiple Foshan suppliers from one World Account \u2014 no intermediary bank fees.",
     image: "images/foshan.webp",
     hasDetail: false,
   },
@@ -40,7 +52,10 @@ const cities = [
     name: "Yiwu",
     slug: "yiwu",
     categories: ["Commodities", "Packaging", "Toys"],
+    topCategories: ["Small Commodities", "Christmas Decorations", "Toys & Novelties", "Jewelry & Hair Accessories", "Packaging & Printing", "Daily Use Products", "Bags & Luggage", "Crafts & Gifts"],
     description: "World\u2019s largest small commodities market.",
+    longDesc: "The world\u2019s largest small commodities market \u2014 75,000+ booths across 5 districts. Yiwu is where global dollar stores, party suppliers, and gift importers source at the lowest MOQs. If it\u2019s small and sells in volume, it\u2019s here.",
+    wfHook: "Pay Yiwu\u2019s 1688 suppliers directly in CNY with 1688 World Pay \u2014 no trading company markup.",
     image: "images/yiwu.webp",
     hasDetail: false,
   },
@@ -48,7 +63,10 @@ const cities = [
     name: "Ningbo",
     slug: "ningbo",
     categories: ["Home", "Appliances", "Auto Parts"],
+    topCategories: ["Home Appliances", "Auto Parts", "Kitchenware", "Power Tools", "Stationery", "Pet Products", "Outdoor & Garden", "Electrical Components"],
     description: "Major port city with diverse export manufacturing.",
+    longDesc: "China\u2019s second-busiest port and a manufacturing powerhouse for home goods, auto parts, and appliances. Ningbo\u2019s proximity to the port means shorter lead times and lower inland freight costs for heavy goods.",
+    wfHook: "Hold USD, EUR, GBP and 17 more currencies in your World Account \u2014 convert to CNY only when rates are right.",
     image: "images/ningbo.webp",
     hasDetail: false,
   },
@@ -56,7 +74,10 @@ const cities = [
     name: "Shanghai",
     slug: "shanghai",
     categories: ["Trade Hub", "Fashion", "Finance"],
+    topCategories: ["Fashion & Apparel", "Cosmetics & Beauty", "Medical Devices", "Fine Chemicals", "Food & Beverage", "Trade Services", "Industrial Equipment", "Luxury Goods"],
     description: "China\u2019s international trade, logistics, and fashion hub.",
+    longDesc: "China\u2019s global gateway for trade, finance, and fashion. Shanghai\u2019s free-trade zone and international logistics network make it the launchpad for high-value and regulated imports \u2014 from cosmetics to medical devices.",
+    wfHook: "Open a free WorldFirst World Account in minutes \u2014 collect, hold, and pay in 20+ currencies from Shanghai to anywhere.",
     image: "images/shanghai.webp",
     hasDetail: false,
   },
@@ -81,8 +102,12 @@ const cityBg       = document.getElementById("city-bg");
 const modal        = document.getElementById("city-modal");
 const modalBg      = document.getElementById("modal-bg");
 const modalName    = document.getElementById("modal-city-name");
+const modalTagline = document.getElementById("modal-tagline");
 const modalCats    = document.getElementById("modal-categories");
 const modalDesc    = document.getElementById("modal-desc");
+const modalWfText  = document.getElementById("modal-wf-text");
+const modalQr      = document.getElementById("modal-qr");
+const modalQrUrl   = document.getElementById("modal-qr-url");
 const modalClose   = document.getElementById("modal-close");
 const backBtn      = document.getElementById("back-btn");
 const track        = document.getElementById("carousel-track");
@@ -311,10 +336,18 @@ function hideCityView() {
 function showCityModal(city) {
   modalBg.style.backgroundImage = `url(${city.image})`;
   modalName.textContent = city.name;
-  modalDesc.textContent = city.description;
-  modalCats.innerHTML = city.categories
+  modalTagline.textContent = city.description;
+  modalDesc.textContent = city.longDesc;
+  modalCats.innerHTML = (city.topCategories || city.categories)
     .map((c) => `<span class="modal-cat-pill">${c}</span>`)
     .join("");
+  modalWfText.textContent = city.wfHook;
+
+  // QR code to CSN guide
+  const csnUrl = `https://socialworldfirst.github.io/china-sourcing-navigator/`;
+  const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(csnUrl)}&format=svg`;
+  modalQr.src = qrApi;
+  modalQrUrl.textContent = "chinasourcingnavigator.com";
 
   modal.classList.add("active");
 }

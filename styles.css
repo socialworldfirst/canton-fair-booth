@@ -694,7 +694,7 @@ html, body {
 }
 
 /* ═══════════════════════════════════════════════════════
-   CITY PREVIEW MODAL
+   CITY PREVIEW MODAL — Enriched two-column
    ═══════════════════════════════════════════════════════ */
 .modal {
   position: fixed;
@@ -718,105 +718,31 @@ html, body {
 
 .modal-content {
   position: relative;
-  width: 48vw;
-  height: 48vh;
   border-radius: 2.5vh;
   overflow: hidden;
   border: 1px solid var(--glass-border);
   transition: transform 0.35s ease;
   transform: scale(0.92);
+  background: var(--bg-deep);
+}
+
+.modal-enriched {
+  width: 74vw;
+  height: 78vh;
+  display: flex;
+  flex-direction: row;
 }
 
 .modal.active .modal-content {
   transform: scale(1);
 }
 
-.modal-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-.modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(10, 0, 21, 0.6) 0%,
-    rgba(10, 0, 21, 0.92) 100%
-  );
-}
-
-.modal-body {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 4vh 4vw;
-  text-align: center;
-}
-
-.modal-city-name {
-  font-size: clamp(28px, 5vh, 60px);
-  font-weight: 800;
-  margin-bottom: 2vh;
-  letter-spacing: -0.02em;
-}
-
-.modal-categories {
-  display: flex;
-  gap: 0.8vh;
-  margin-bottom: 2vh;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.modal-cat-pill {
-  font-size: clamp(10px, 1.3vh, 15px);
-  padding: 0.5vh 1.3vw;
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.9);
-  border-radius: 50px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  font-weight: 500;
-}
-
-.modal-desc {
-  font-size: clamp(12px, 1.6vh, 20px);
-  color: var(--text-secondary);
-  margin-bottom: 2.5vh;
-  max-width: 30vw;
-  line-height: 1.5;
-}
-
-.modal-coming-soon {
-  display: flex;
-  align-items: center;
-  gap: 0.6vw;
-  font-size: clamp(11px, 1.4vh, 17px);
-  font-weight: 600;
-  color: var(--wf-red);
-  padding: 0.8vh 1.8vw;
-  border: 1.5px solid rgba(255, 0, 81, 0.5);
-  border-radius: 50px;
-  background: rgba(255, 0, 81, 0.08);
-  margin-bottom: 1vh;
-}
-
-.modal-scan-hint {
-  font-size: clamp(9px, 1.1vh, 13px);
-  color: var(--text-muted);
-}
-
+/* ── Close button ── */
 .modal-close {
   position: absolute;
-  top: 2vh;
-  right: 2vh;
+  top: 1.5vh;
+  right: 1.5vh;
+  z-index: 10;
   width: clamp(32px, 4vh, 48px);
   height: clamp(32px, 4vh, 48px);
   border-radius: 50%;
@@ -835,6 +761,200 @@ html, body {
 .modal-close:hover {
   background: var(--wf-red);
   border-color: var(--wf-red);
+}
+
+/* ── Left: Image panel ── */
+.modal-image-panel {
+  position: relative;
+  width: 36%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.modal-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 0, 21, 0.95) 0%,
+    rgba(10, 0, 21, 0.3) 50%,
+    rgba(10, 0, 21, 0.15) 100%
+  );
+}
+
+.modal-image-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3vh 2vw;
+  z-index: 2;
+}
+
+.modal-city-name {
+  font-size: clamp(28px, 5vh, 60px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 0.8vh;
+}
+
+.modal-city-tagline {
+  font-size: clamp(11px, 1.4vh, 17px);
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Right: Info panel ── */
+.modal-info-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.modal-info-scroll {
+  flex: 1;
+  padding: 3.5vh 2.5vw 2.5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  overflow-y: auto;
+}
+
+.modal-desc {
+  font-size: clamp(12px, 1.5vh, 18px);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ── Categories section ── */
+.modal-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.modal-section-title {
+  font-size: clamp(11px, 1.3vh, 15px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.modal-categories {
+  display: flex;
+  gap: 0.6vh;
+  flex-wrap: wrap;
+}
+
+.modal-cat-pill {
+  font-size: clamp(10px, 1.2vh, 14px);
+  padding: 0.5vh 1.1vw;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 50px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ── WorldFirst promo ── */
+.modal-wf-promo {
+  display: flex;
+  align-items: flex-start;
+  gap: 1vw;
+  background: linear-gradient(135deg, rgba(255, 0, 81, 0.08) 0%, rgba(255, 0, 81, 0.03) 100%);
+  border: 1px solid rgba(255, 0, 81, 0.2);
+  border-radius: var(--radius-md);
+  padding: 1.5vh 1.4vw;
+}
+
+.modal-wf-icon {
+  flex-shrink: 0;
+  width: 2.5vw;
+  display: flex;
+  align-items: center;
+  padding-top: 0.2vh;
+}
+
+.modal-wf-logo {
+  width: 100%;
+  height: auto;
+  opacity: 0.85;
+}
+
+.modal-wf-text {
+  font-size: clamp(11px, 1.3vh, 15px);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+/* ── Bottom: QR + Coming Soon ── */
+.modal-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1vh;
+  border-top: 1px solid var(--glass-border);
+  margin-top: auto;
+}
+
+.modal-qr-area {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.modal-qr-frame {
+  width: 5.5vh;
+  height: 5.5vh;
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 0.3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.modal-qr-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15vh;
+}
+
+.modal-qr-label {
+  font-size: clamp(10px, 1.2vh, 14px);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.modal-qr-url {
+  font-size: clamp(8px, 1vh, 12px);
+  color: var(--text-muted);
+}
+
+.modal-coming-soon {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  font-size: clamp(10px, 1.2vh, 15px);
+  font-weight: 600;
+  color: var(--wf-red);
+  padding: 0.6vh 1.4vw;
+  border: 1.5px solid rgba(255, 0, 81, 0.4);
+  border-radius: 50px;
+  background: rgba(255, 0, 81, 0.06);
+  white-space: nowrap;
 }
 
 /* ═══ UTILITY ═══ */
