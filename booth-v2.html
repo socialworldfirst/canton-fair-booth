@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>China Sourcing Navigator — Canton Fair 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 100vw; height: 100vh; overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: #0a0015; color: #fff;
+    -webkit-font-smoothing: antialiased;
+    touch-action: manipulation;
+  }
+
+  :root {
+    --wf-red: #FF0051;
+    --bg: #0a0015;
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.09);
+    --text-dim: rgba(255,255,255,0.4);
+    --text-mid: rgba(255,255,255,0.6);
+    --pad: 4vw;
+  }
+
+  .screen {
+    width: 100vw; height: 100vh; position: relative;
+    background:
+      radial-gradient(ellipse at 25% 15%, rgba(255,0,81,0.035) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 85%, rgba(74,100,217,0.025) 0%, transparent 50%),
+      linear-gradient(180deg, #130022 0%, #0a0015 45%, #0d0018 100%);
+    display: flex; flex-direction: column;
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    height: 7vh; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 var(--pad);
+  }
+  .top-left { display: flex; align-items: center; gap: 1.2vw; }
+  .wf-logo { height: 3.2vh; opacity: 0.8; }
+  .nav-divider { width: 1px; height: 2.4vh; background: rgba(255,255,255,0.15); }
+  .nav-title {
+    font-size: clamp(9px, 1.2vh, 14px); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-mid);
+  }
+  .canton-badge {
+    font-size: clamp(9px, 1.1vh, 13px); font-weight: 600;
+    padding: 0.5vh 1.4vw; border: 1.5px solid var(--wf-red);
+    border-radius: 50px; color: var(--wf-red);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  /* ── Main area ── */
+  .main { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+  /* ── Billboard section (top half) ── */
+  .billboard-area {
+    height: 42vh; flex-shrink: 0; position: relative;
+    display: flex; align-items: center;
+    padding: 0 var(--pad);
+  }
+  .billboard-card {
+    position: absolute; left: var(--pad); right: var(--pad);
+    opacity: 0; transform: translateY(1vh);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    pointer-events: none;
+  }
+  .billboard-card.active {
+    opacity: 1; transform: translateY(0); pointer-events: all;
+  }
+  .bb-headline {
+    font-size: clamp(26px, 5vh, 64px); font-weight: 800;
+    line-height: 1.18; letter-spacing: -0.02em; max-width: 70vw;
+  }
+  .bb-headline .dim { color: var(--text-mid); }
+  .bb-headline .hit { color: var(--wf-red); }
+  .bb-headline .white { color: #fff; }
+  .bb-sub {
+    margin-top: 2.5vh;
+    font-size: clamp(13px, 1.8vh, 22px); font-weight: 500; color: var(--text-mid);
+  }
+  .bb-sub .num { color: var(--wf-red); font-weight: 800; }
+
+  /* ── Carousel section (bottom half) ── */
+  .carousel-area {
+    flex: 1; position: relative;
+    padding: 0 0 0 var(--pad);
+    display: flex; flex-direction: column; min-height: 0;
+  }
+  .carousel-header {
+    display: flex; align-items: baseline; gap: 1.5vw;
+    margin-bottom: 1.5vh; padding-right: var(--pad);
+  }
+  .carousel-title {
+    font-size: clamp(14px, 2vh, 22px); font-weight: 700;
+  }
+  .carousel-title .accent { color: var(--wf-red); }
+  .carousel-subtitle {
+    font-size: clamp(10px, 1.2vh, 14px); color: var(--text-dim); font-weight: 500;
+  }
+  .carousel-label {
+    margin-left: auto;
+    font-size: clamp(9px, 1.1vh, 12px); color: var(--text-dim);
+    font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em;
+    padding-right: var(--pad);
+  }
+
+  .carousel-track-wrap {
+    flex: 1; overflow: hidden; position: relative; min-height: 0;
+  }
+  .carousel-track {
+    display: flex; gap: 1.2vw; height: 100%;
+    transition: transform 0.6s cubic-bezier(0.22,0.61,0.36,1);
+    will-change: transform; padding-bottom: 1vh;
+  }
+
+  /* ── City cards ── */
+  .city-card {
+    flex-shrink: 0;
+    width: 17vw; height: 100%;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 1.4vh;
+    overflow: hidden; cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .city-card:hover, .city-card.selected {
+    transform: scale(1.03);
+    border-color: rgba(255,0,81,0.4);
+  }
+
+  .card-img {
+    height: 40%; flex-shrink: 0;
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .card-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 30%, rgba(10,0,21,0.9) 100%);
+  }
+  .card-city-name {
+    position: absolute; bottom: 0.8vh; left: 1vw;
+    font-size: clamp(14px, 2vh, 22px); font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+
+  .card-body {
+    flex: 1; padding: 1.2vh 1vw;
+    display: flex; flex-direction: column; gap: 0.8vh;
+    overflow: hidden;
+  }
+  .card-tagline {
+    font-size: clamp(9px, 1.1vh, 12px); color: var(--text-mid);
+    line-height: 1.35; display: -webkit-box;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .card-categories {
+    display: flex; flex-wrap: wrap; gap: 0.4vh;
+  }
+  .card-cat {
+    font-size: clamp(8px, 0.95vh, 11px); font-weight: 600;
+    padding: 0.2vh 0.6vw; border-radius: 50px;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75);
+    white-space: nowrap;
+  }
+  .card-stat {
+    margin-top: auto;
+    font-size: clamp(8px, 1vh, 12px); color: var(--text-dim);
+    line-height: 1.3;
+  }
+  .card-stat strong {
+    color: var(--wf-red); font-weight: 700;
+  }
+  .card-markets {
+    font-size: clamp(8px, 0.95vh, 11px); color: var(--text-dim);
+    line-height: 1.3;
+  }
+  .card-markets strong { color: rgba(255,255,255,0.6); font-weight: 600; }
+
+  /* ── Bottom bar ── */
+  .bottom-bar {
+    height: 9vh; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 var(--pad);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .bottom-left { display: flex; align-items: center; gap: 1.2vw; }
+  .qr-frame {
+    width: 5.5vh; height: 5.5vh; background: #fff;
+    border-radius: 0.5vh; padding: 0.3vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qr-frame img { width: 100%; height: 100%; }
+  .qr-text { display: flex; flex-direction: column; gap: 0.15vh; }
+  .qr-label {
+    font-size: clamp(10px, 1.3vh, 15px); font-weight: 600; color: #fff;
+  }
+  .qr-url { font-size: clamp(8px, 1vh, 12px); color: var(--text-dim); }
+  .bottom-right { display: flex; align-items: center; gap: 0.8vw; }
+  .powered-by {
+    font-size: clamp(8px, 1vh, 12px); color: var(--text-dim);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .wf-logo-sm { height: 2.2vh; opacity: 0.6; }
+
+  /* ── Paused indicator ── */
+  .pause-indicator {
+    position: absolute; top: 1.5vh; right: 1.5vw;
+    font-size: clamp(9px, 1vh, 12px); color: var(--text-dim);
+    opacity: 0; transition: opacity 0.3s ease;
+    display: flex; align-items: center; gap: 0.3vw;
+  }
+  .pause-indicator.visible { opacity: 1; }
+  .pause-dot {
+    width: 0.6vh; height: 0.6vh; border-radius: 50%;
+    background: var(--wf-red);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+</style>
+</head>
+<body>
+
+<div class="screen">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="top-left">
+      <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo">
+      <span class="nav-divider"></span>
+      <span class="nav-title">China Sourcing Navigator</span>
+    </div>
+    <span class="canton-badge">Canton Fair 2026</span>
+  </div>
+
+  <div class="main">
+
+    <!-- Billboard messages -->
+    <div class="billboard-area">
+      <div class="billboard-card active" id="bb0">
+        <div class="bb-headline">
+          <span class="dim">Your bank charges you</span> <span class="hit">3%</span> <span class="dim">on every payment.</span><br>
+          <span class="white">They just don't call it a fee.</span>
+        </div>
+        <div class="bb-sub"><span class="num">1.5 million</span> businesses already save with WorldFirst.</div>
+      </div>
+      <div class="billboard-card" id="bb1">
+        <div class="bb-headline">
+          <span class="white">You flew</span> <span class="hit">12 hours</span> <span class="white">to save on sourcing.</span><br>
+          <span class="dim">Don't lose it to</span> <span class="hit">hidden fees.</span>
+        </div>
+        <div class="bb-sub"><span class="num">1.5 million</span> businesses keep what they save.</div>
+      </div>
+      <div class="billboard-card" id="bb2">
+        <div class="bb-headline">
+          <span class="white">Where things get</span> <span class="hit">made.</span>
+        </div>
+        <div class="bb-sub">20 sourcing cities. 150,000+ verified suppliers. Tap a city to explore.</div>
+      </div>
+    </div>
+
+    <!-- City carousel -->
+    <div class="carousel-area">
+      <div class="carousel-header">
+        <div class="carousel-title">Explore <span class="accent">20</span> Sourcing Cities</div>
+        <div class="carousel-subtitle">Tap any city to learn more</div>
+        <div class="carousel-label" id="pause-label"></div>
+      </div>
+      <div class="carousel-track-wrap">
+        <div class="carousel-track" id="track"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <div class="bottom-left">
+      <div class="qr-frame">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fsourcing.worldfirst.com&format=svg" alt="QR">
+      </div>
+      <div class="qr-text">
+        <span class="qr-label">Full sourcing guide — 20 cities</span>
+        <span class="qr-url">sourcing.worldfirst.com</span>
+      </div>
+    </div>
+    <div class="bottom-right">
+      <span class="powered-by">Powered by</span>
+      <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo-sm">
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── City data (from sourcing.worldfirst.com) ──
+const cities = [
+  {
+    name: "Guangzhou",
+    image: "images/guangzhou.webp",
+    tagline: "Canton Fair host city. China's oldest trade capital.",
+    categories: ["Apparel", "Leather", "Beauty", "Textiles", "Toys"],
+    stat: "Shahe ships <strong>3,000+ tons</strong> of clothing daily",
+    markets: "<strong>Shisanhang</strong> — 6,000+ vendors, sketch to rack in 72hrs<br><strong>Baima</strong> — 2,000 shops, 10 floors, ISO certified",
+    url: "https://sourcing.worldfirst.com/cities/guangzhou"
+  },
+  {
+    name: "Shenzhen",
+    image: "images/shenzhen.webp",
+    tagline: "China's hardware capital. Prototype to production in weeks.",
+    categories: ["Electronics", "Smart Hardware", "LED", "Drones", "Audio"],
+    stat: "Huaqiangbei: <strong>20,000 merchants</strong>, 480B+ RMB/year",
+    markets: "<strong>SEG Plaza</strong> — 3,000+ component shops, 10 floors<br><strong>Nanyou</strong> — 4,000+ merchants, original-design fashion",
+    url: "https://sourcing.worldfirst.com/cities/shenzhen"
+  },
+  {
+    name: "Dongguan",
+    image: "images/dongguan.webp",
+    tagline: "The world's factory floor. OEM capital for global brands.",
+    categories: ["Electronics", "Toys", "Footwear", "Moulds", "Knitwear"],
+    stat: "<strong>1 in 5</strong> smartphones worldwide built here",
+    markets: "<strong>Fumin City</strong> — 300,000 sqm, women's fashion<br><strong>Houjie</strong> — 5km Furniture Avenue, 600+ companies",
+    url: "https://sourcing.worldfirst.com/cities/dongguan"
+  },
+  {
+    name: "Foshan",
+    image: "images/foshan.webp",
+    tagline: "World's largest furniture market. 54% of China's tiles.",
+    categories: ["Furniture", "Ceramics", "Aluminium", "Lighting", "Appliances"],
+    stat: "<strong>7,000+</strong> furniture factories, 20M sqm showrooms",
+    markets: "<strong>Louvre</strong> — 380,000 sqm, 2M visitors/year<br><strong>Nanzhuang</strong> — 2,000+ ceramic enterprises",
+    url: "https://sourcing.worldfirst.com/cities/foshan"
+  },
+  {
+    name: "Yiwu",
+    image: "images/yiwu.webp",
+    tagline: "World's largest small commodities market.",
+    categories: ["Commodities", "Socks", "Jewelry", "Christmas", "Packaging"],
+    stat: "<strong>75,000</strong> booths, 2.1 million products",
+    markets: "<strong>Int'l Trade City</strong> — 6.4M sqm, 26 product categories<br><strong>Datang Town</strong> — 27 billion pairs of socks/year",
+    url: "https://sourcing.worldfirst.com/cities/yiwu"
+  },
+  {
+    name: "Ningbo",
+    image: "images/ningbo.webp",
+    tagline: "Major port city. Housewares, appliances, auto parts.",
+    categories: ["Kitchenware", "Appliances", "Tools", "Stationery", "Auto Parts"],
+    stat: "<strong>~60%</strong> of world's small appliances from Cixi",
+    markets: "<strong>Cixi</strong> — small appliance manufacturing cluster<br><strong>Yuyao</strong> — 2,000+ plastic manufacturers",
+    url: "https://sourcing.worldfirst.com/cities/ningbo"
+  },
+  {
+    name: "Shanghai",
+    image: "images/shanghai.webp",
+    tagline: "Command and control hub. World's busiest port.",
+    categories: ["Trade Services", "Fashion", "Auto Parts", "Semiconductors", "F&B"],
+    stat: "Port: <strong>55M+ TEU</strong> — world's busiest 16 years running",
+    markets: "<strong>Qipu Road</strong> — 100+ year apparel wholesale hub<br><strong>South Bund</strong> — 285 bespoke tailoring shops",
+    url: "https://sourcing.worldfirst.com/cities/shanghai"
+  },
+  {
+    name: "Zhongshan",
+    image: "images/guangzhou.webp",
+    tagline: "China's lighting capital. 70% of national production.",
+    categories: ["Lighting", "Appliances", "Locks", "Furniture", "Apparel"],
+    stat: "Guzhen: <strong>30,000+</strong> lighting companies",
+    markets: "<strong>Star Alliance</strong> — premium lighting center<br><strong>Huayi Plaza</strong> — 200,000 sqm, R&D partnerships",
+    url: "https://sourcing.worldfirst.com/cities/zhongshan"
+  },
+  {
+    name: "Suzhou",
+    image: "images/shanghai.webp",
+    tagline: "City of Silk. Precision components. Bridal capital.",
+    categories: ["Silk", "Textiles", "Precision Parts", "Electronics", "Bridal"],
+    stat: "Huqiu: <strong>70-80%</strong> of China's wedding dresses",
+    markets: "<strong>Eastern Silk Market</strong> — 7,000 booths, 100B RMB<br><strong>Changshu</strong> — 9,000+ clothing shops",
+    url: "https://sourcing.worldfirst.com/cities/suzhou"
+  },
+  {
+    name: "Xiamen",
+    image: "images/foshan.webp",
+    tagline: "World's sunglasses factory. Stone and fitness hub.",
+    categories: ["Eyewear", "Fitness Equipment", "Stone", "LED", "Tea"],
+    stat: "<strong>80%</strong> of world's sunglasses made here",
+    markets: "<strong>Jingshang</strong> — eyewear and optical frames<br><strong>Stone Center</strong> — 56,000 sqm showroom",
+    url: "https://sourcing.worldfirst.com/cities/xiamen"
+  },
+  {
+    name: "Qingdao",
+    image: "images/ningbo.webp",
+    tagline: "Tires, Haier, Hisense, and 70% of the world's eyelashes.",
+    categories: ["Tires", "Appliances", "Eyelashes", "Marine", "Textiles"],
+    stat: "Pingdu: <strong>70%</strong> of world's false eyelashes",
+    markets: "<strong>Jimo</strong> — 9,000+ shops, knitwear hub<br><strong>Haier Industrial Park</strong> — factory tours available",
+    url: "https://sourcing.worldfirst.com/cities/qingdao"
+  },
+  {
+    name: "Chengdu",
+    image: "images/shenzhen.webp",
+    tagline: "Western China's tech hub. Software, aerospace, food.",
+    categories: ["IT & Software", "Aerospace", "Biotech", "Food", "Pharma"],
+    stat: "Tianfu Software Park: <strong>600+</strong> companies, 34 Fortune 500",
+    markets: "<strong>Hehuachi</strong> — Southwest China's largest wholesale<br><strong>Wukuaishi</strong> — Sichuan spices and tea",
+    url: "https://sourcing.worldfirst.com/cities/chengdu"
+  },
+  {
+    name: "Quanzhou",
+    image: "images/dongguan.webp",
+    tagline: "Sportswear capital. Anta, 361, and Peak call it home.",
+    categories: ["Sportswear", "Footwear", "Stone", "Tea", "Ceramics"],
+    stat: "Home to <strong>Anta, Peak, 361°</strong> — China's sportswear giants",
+    markets: "<strong>Jinjiang</strong> — China's shoe capital<br><strong>Shishi</strong> — textile and garment hub",
+    url: "https://sourcing.worldfirst.com/cities/quanzhou"
+  },
+  {
+    name: "Hangzhou",
+    image: "images/shanghai.webp",
+    tagline: "E-commerce capital. Alibaba HQ. Silk and digital trade.",
+    categories: ["E-commerce", "Silk", "Tea", "Digital Trade", "Fashion"],
+    stat: "Home to <strong>Alibaba, 1688</strong> — China's digital trade hub",
+    markets: "<strong>Sijiqing</strong> — largest garment wholesale market<br><strong>1688 HQ</strong> — online sourcing gateway",
+    url: "https://sourcing.worldfirst.com/cities/hangzhou"
+  },
+  {
+    name: "Kunshan",
+    image: "images/shenzhen.webp",
+    tagline: "Laptop assembly hub. Precision electronics gateway.",
+    categories: ["Laptops", "Electronics", "Precision Parts", "Optics", "Packaging"],
+    stat: "Historically produced <strong>1/3</strong> of world's laptops",
+    markets: "<strong>Kunshan IT Zone</strong> — electronics assembly cluster<br><strong>Huaqiao</strong> — business services hub",
+    url: "https://sourcing.worldfirst.com/cities/kunshan"
+  },
+  {
+    name: "Danyang",
+    image: "images/foshan.webp",
+    tagline: "China's optical lens capital. Eyeglasses and tools.",
+    categories: ["Optical Lenses", "Eyeglasses", "Tools", "Hardware", "Chemicals"],
+    stat: "Produces <strong>75%</strong> of China's optical lenses",
+    markets: "<strong>Danyang Optical City</strong> — lenses and frames wholesale<br><strong>Yunyang Industrial</strong> — tools and hardware",
+    url: "https://sourcing.worldfirst.com/cities/danyang"
+  },
+  {
+    name: "Zhengzhou",
+    image: "images/dongguan.webp",
+    tagline: "Central China logistics hub. iPhone assembly capital.",
+    categories: ["Smartphones", "Food Processing", "Textiles", "Machinery", "Auto"],
+    stat: "Foxconn campus: <strong>~50%</strong> of world's iPhones",
+    markets: "<strong>Zhongyuan</strong> — Central China's largest wholesale<br><strong>Foxconn Zhengzhou</strong> — electronics assembly",
+    url: "https://sourcing.worldfirst.com/cities/zhengzhou"
+  },
+  {
+    name: "Chongqing",
+    image: "images/guangzhou.webp",
+    tagline: "Western manufacturing powerhouse. Auto and electronics.",
+    categories: ["Automotive", "Laptops", "Motorcycles", "Chemicals", "Food"],
+    stat: "China's <strong>#1</strong> motorcycle and laptop production base",
+    markets: "<strong>Chaotiamen</strong> — largest wholesale market in West<br><strong>Auto Industrial Park</strong> — 300+ parts manufacturers",
+    url: "https://sourcing.worldfirst.com/cities/chongqing"
+  },
+  {
+    name: "Pingxiang",
+    image: "images/yiwu.webp",
+    tagline: "Bicycle and baby stroller capital of China.",
+    categories: ["Bicycles", "Baby Strollers", "Auto Parts", "Castings", "Hardware"],
+    stat: "Produces <strong>~50%</strong> of China's baby strollers",
+    markets: "<strong>Hejigou</strong> — bicycle parts wholesale<br><strong>Pingxiang Industrial Zone</strong> — stroller cluster",
+    url: "https://sourcing.worldfirst.com/cities/pingxiang"
+  },
+  {
+    name: "Hong Kong",
+    image: "images/shanghai.webp",
+    tagline: "Free port. Trade gateway. Quality assurance hub.",
+    categories: ["Trade Services", "Jewelry", "Electronics", "Fashion", "Finance"],
+    stat: "<strong>Free port</strong> — zero tariffs, common law, English-speaking",
+    markets: "<strong>AsiaWorld-Expo</strong> — mega trade shows year-round<br><strong>Sham Shui Po</strong> — fabric and accessories",
+    url: "https://sourcing.worldfirst.com/cities/hong-kong"
+  },
+];
+
+// ── Billboard rotation ──
+const bbCards = document.querySelectorAll('.billboard-card');
+let bbIndex = 0;
+
+function rotateBillboard() {
+  bbCards[bbIndex].classList.remove('active');
+  bbIndex = (bbIndex + 1) % bbCards.length;
+  bbCards[bbIndex].classList.add('active');
+}
+
+setInterval(rotateBillboard, 6000);
+
+// ── Carousel ──
+const track = document.getElementById('track');
+const pauseLabel = document.getElementById('pause-label');
+let offset = 0;
+let autoTimer = null;
+let idleTimer = null;
+let paused = false;
+
+function renderCards() {
+  // Triple for infinite loop
+  const tripled = [...cities, ...cities, ...cities];
+  track.innerHTML = tripled.map((city, i) => `
+    <div class="city-card" data-index="${i % cities.length}" data-url="${city.url}">
+      <div class="card-img" style="background-image:url(${city.image})">
+        <div class="card-img-overlay"></div>
+        <div class="card-city-name">${city.name}</div>
+      </div>
+      <div class="card-body">
+        <div class="card-tagline">${city.tagline}</div>
+        <div class="card-categories">
+          ${city.categories.map(c => `<span class="card-cat">${c}</span>`).join('')}
+        </div>
+        <div class="card-stat">${city.stat}</div>
+        <div class="card-markets">${city.markets}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function getCardStep() {
+  const card = track.querySelector('.city-card');
+  if (!card) return 200;
+  return card.offsetWidth + parseFloat(getComputedStyle(track).gap);
+}
+
+function setPosition(animate) {
+  track.style.transition = animate ? 'transform 0.6s cubic-bezier(0.22,0.61,0.36,1)' : 'none';
+  track.style.transform = `translateX(${offset}px)`;
+}
+
+function scrollNext() {
+  const step = getCardStep();
+  offset -= step;
+  setPosition(true);
+
+  // Wrap around
+  const setWidth = cities.length * step;
+  setTimeout(() => {
+    if (Math.abs(offset) >= setWidth * 2) {
+      offset += setWidth;
+      setPosition(false);
+    }
+  }, 650);
+}
+
+function startAuto() {
+  stopAuto();
+  paused = false;
+  pauseLabel.textContent = '';
+  autoTimer = setInterval(scrollNext, 3000);
+}
+
+function stopAuto() {
+  if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+}
+
+function pauseCarousel() {
+  stopAuto();
+  paused = true;
+  pauseLabel.textContent = 'Tap to browse — auto-resumes in 15s';
+
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(startAuto, 15000);
+}
+
+// Touch / click to pause
+track.addEventListener('click', (e) => {
+  const card = e.target.closest('.city-card');
+  if (card) {
+    pauseCarousel();
+    // Highlight
+    track.querySelectorAll('.city-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+  }
+});
+
+// Touch swipe
+let touchX = 0;
+track.addEventListener('touchstart', (e) => {
+  touchX = e.changedTouches[0].screenX;
+  pauseCarousel();
+}, { passive: true });
+
+track.addEventListener('touchend', (e) => {
+  const diff = touchX - e.changedTouches[0].screenX;
+  if (Math.abs(diff) > 40) {
+    const step = getCardStep();
+    offset += diff > 0 ? -step : step;
+    setPosition(true);
+
+    const setWidth = cities.length * step;
+    setTimeout(() => {
+      if (Math.abs(offset) >= setWidth * 2) { offset += setWidth; setPosition(false); }
+      if (offset > 0) { offset -= setWidth; setPosition(false); }
+    }, 650);
+  }
+}, { passive: true });
+
+// ── Init ──
+renderCards();
+// Start in middle set
+const initStep = getCardStep();
+offset = -(cities.length * initStep);
+setPosition(false);
+setTimeout(startAuto, 3000);
+</script>
+</body>
+</html>

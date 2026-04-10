@@ -1,0 +1,521 @@
+{
+  "scrapedFrom": "sourcing.worldfirst.com/cities/[slug]",
+  "scrapedDate": "2026-04-10",
+  "note": "Image URLs not available — site renders images client-side via JS hydration. Markets shown are top 3 per city (site hides remaining behind 'Show all' toggle).",
+  "guangzhou": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": 11,
+    "markets": [
+      {
+        "name": "十三行 Shisanhang",
+        "address": "广州市荔湾区十三行路1号新中国大厦",
+        "focus": "Mid-range fashion, 6,000+ vendors",
+        "imageUrl": null
+      },
+      {
+        "name": "白马服装市场 Baima Garment Market",
+        "address": "广州市越秀区站南路16号白马大厦",
+        "focus": "Premium, brand-focused fashion",
+        "imageUrl": null
+      },
+      {
+        "name": "沙河服装批发市场 Shahe Clothing Market",
+        "address": "广州市天河区沙河大街濂泉路",
+        "focus": "Budget-to-mid fashion, high volume",
+        "imageUrl": null
+      },
+      {
+        "name": "中大布匹市场 Zhongda Fabric Market",
+        "address": "广州市海珠区 (Haizhu district)",
+        "focus": "23,000+ shops, fabric wholesale",
+        "imageUrl": null
+      },
+      {
+        "name": "美博城 Meibo City",
+        "address": "广州市 (near Guangzhou Railway Station)",
+        "focus": "Beauty and cosmetics wholesale",
+        "imageUrl": null
+      },
+      {
+        "name": "三元里白云皮具交易中心 Baiyun World Leather Trading Center",
+        "address": "广州市解放北路 (Jiefang North Road)",
+        "focus": "Leather goods wholesale",
+        "imageUrl": null
+      },
+      {
+        "name": "一联国际广场 Onelink International Plaza",
+        "address": "广州市一德路 (Yide Road)",
+        "focus": "International trade wholesale",
+        "imageUrl": null
+      }
+    ]
+  },
+  "shenzhen": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": 12,
+    "markets": [
+      {
+        "name": "赛格电子市场 SEG Electronics Market",
+        "address": "深圳市福田区华强北路1002号赛格广场",
+        "focus": "Electronics components and consumer electronics",
+        "imageUrl": null
+      },
+      {
+        "name": "华强电子世界 Huaqiang Electronics World",
+        "address": "深圳市福田区华强北路1007-1015号",
+        "focus": "Electronics wholesale",
+        "imageUrl": null
+      },
+      {
+        "name": "远望数码城 Yuanwang Digital Mall",
+        "address": "深圳市福田区华强北路2006号华联发综合楼大厦",
+        "focus": "Digital products and accessories",
+        "imageUrl": null
+      }
+    ]
+  },
+  "dongguan": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": 14,
+    "markets": [
+      {
+        "name": "富民服装批发市场 Fumin Clothing Wholesale Market",
+        "address": "虎门镇银龙路24号",
+        "focus": "300,000 sqm across 5 floors. Women's clothing, export wear, kids' fashion",
+        "imageUrl": null
+      },
+      {
+        "name": "黄河时装城 Yellow River Fashion City",
+        "address": "虎门镇虎门大遐96号",
+        "focus": "Korean-style women's wear (F1), menswear and casual wear (F2)",
+        "imageUrl": null
+      },
+      {
+        "name": "大莹女装批发城 Dayin Women's Wear City",
+        "address": "虎门大道与银龙路交汇处",
+        "focus": "Mid-range women's fashion. Major e-commerce supply hub",
+        "imageUrl": null
+      }
+    ]
+  },
+  "foshan": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": 16,
+    "markets": [
+      {
+        "name": "罗浮宫国际家具博览中心 Louvre International Furniture Expo Center",
+        "address": "广东省佛山市顺德区121省道乐从路段",
+        "focus": "High-end furniture exhibition and wholesale",
+        "imageUrl": null
+      },
+      {
+        "name": "红星美凯龙乐从批发博览中心 Red Star Macalline Lecong",
+        "address": "佛山市顺德区325国道水藤路乐从",
+        "focus": "Furniture wholesale and exhibition",
+        "imageUrl": null
+      },
+      {
+        "name": "顺联家具城北区 Sunlink Furniture City — North",
+        "address": "佛山市顺德区乐从镇河滨南路1号",
+        "focus": "Furniture wholesale in Lecong/Longjiang corridor",
+        "imageUrl": null
+      }
+    ]
+  },
+  "yiwu": {
+    "tagline": "Complete guide to sourcing from Yiwu. Wholesale markets, factory zones, 1688 supplier discovery, Canton Fair, and payment solutions.",
+    "totalMarketsOnPage": 9,
+    "markets": [
+      {
+        "name": "国际商贸城一区 International Trade City — District 1",
+        "address": "义乌市稠州北路555号一区",
+        "focus": "Toys, jewelry, crafts (10,000+ booths)",
+        "imageUrl": null
+      },
+      {
+        "name": "国际商贸城二区 International Trade City — District 2",
+        "address": "义乌市稠州北路555号二区",
+        "focus": "Bags, hardware, electronics (8,000+ booths)",
+        "imageUrl": null
+      },
+      {
+        "name": "国际商贸城三区 International Trade City — District 3",
+        "address": "义乌市稠州北路555号三区",
+        "focus": "Stationery, cosmetics, office supplies (7,000+ booths)",
+        "imageUrl": null
+      },
+      {
+        "name": "兴中市场 Xingzhong Market",
+        "address": "义乌市 (outside main International Trade City complex)",
+        "focus": "Jewelry and accessories (3,000+ shops)",
+        "imageUrl": null
+      },
+      {
+        "name": "国际生产资料市场 International Production Materials Market",
+        "address": "义乌市雪峰西路 (Xuefeng West Road)",
+        "focus": "Raw materials, printing equipment (800 showrooms)",
+        "imageUrl": null
+      }
+    ]
+  },
+  "ningbo": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": 10,
+    "markets": [
+      {
+        "name": "慈溪小家电产业集群 Cixi Small Appliance Cluster",
+        "address": "慈溪市周巷镇、观海卫镇、横河镇一带",
+        "focus": "Small home appliances manufacturing cluster",
+        "imageUrl": null
+      },
+      {
+        "name": "余姚中国塑料城 Yuyao Plastic Industrial Zone",
+        "address": "余姚市城东新区中国塑料城",
+        "focus": "Plastics wholesale and manufacturing",
+        "imageUrl": null
+      },
+      {
+        "name": "慈溪三北工业区厨具制造 Cixi Kitchenware & Cookware Zone",
+        "address": "慈溪市三北工业区（龙山镇、三北镇）",
+        "focus": "Kitchenware and cookware manufacturing",
+        "imageUrl": null
+      }
+    ]
+  },
+  "shanghai": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": null,
+    "markets": [
+      {
+        "name": "七浦路服装批发市场 Qipu Road Clothing Market",
+        "address": "上海市静安区七浦路303号",
+        "focus": "Shanghai's largest apparel wholesale market. 680m street, 10+ mall buildings",
+        "imageUrl": null
+      },
+      {
+        "name": "南外滩面料市场 South Bund Fabric Market",
+        "address": "上海市黄浦区陆家浜路399号",
+        "focus": "World-famous bespoke tailoring. 285 tailor shops across 3 floors",
+        "imageUrl": null
+      },
+      {
+        "name": "凯旋城服装市场 Kaixuancheng Clothing Market",
+        "address": "上海市静安区七浦路226号",
+        "focus": "20,000+ m² specialized clothing wholesale. Part of the Qipu Road cluster",
+        "imageUrl": null
+      }
+    ]
+  },
+  "zhongshan": {
+    "tagline": null,
+    "totalMarketsOnPage": 9,
+    "markets": [
+      {
+        "name": "星光联盟 Star Alliance Global Brand Lighting Center",
+        "address": "中山市古镇镇中兴大道6号",
+        "focus": "Mid-to-high-end lighting. 360,000 m². International pavilion, LED experience halls",
+        "imageUrl": null
+      },
+      {
+        "name": "华艺广场 Huayi International Lighting Plaza",
+        "address": "中山市古镇镇奇景路38号",
+        "focus": "200,000 m² complex with five-star hotel, R&D tech park. Mid-to-high-end lighting brands",
+        "imageUrl": null
+      },
+      {
+        "name": "世纪灯饰广场 Century Lighting Square",
+        "address": "中山市古镇镇新兴中路56号",
+        "focus": "~200,000 m². Mid-to-high-end lighting products across multiple floors",
+        "imageUrl": null
+      }
+    ]
+  },
+  "xiamen": {
+    "tagline": null,
+    "totalMarketsOnPage": 8,
+    "markets": [
+      {
+        "name": "精商眼镜批发市场 Jingshang Eyewear Wholesale Market",
+        "address": "厦门市思明区明发商业广场B1层",
+        "focus": "Sunglasses, prescription glasses, optical frames, eyewear accessories",
+        "imageUrl": null
+      },
+      {
+        "name": "厦门国际石材中心 Xiamen International Stone Center",
+        "address": "厦门市湖里区方湖路289号",
+        "focus": "56,000 m² showroom for stone slabs, granite, marble, quartz, engineered stone",
+        "imageUrl": null
+      },
+      {
+        "name": "夏商五村灯饰城 Xiashang Wucun Lighting City",
+        "address": "厦门市思明区五村",
+        "focus": "LED products, lighting fixtures, commercial lighting, decorative lighting",
+        "imageUrl": null
+      }
+    ]
+  },
+  "qingdao": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": 9,
+    "markets": [
+      {
+        "name": "即墨服装批发市场 Jimo Clothing Wholesale Market",
+        "address": "青岛市即墨区鹤山路920号",
+        "focus": "Knitwear, children's clothing, Korean fashion",
+        "imageUrl": null
+      },
+      {
+        "name": "青岛国际珠宝城 Qingdao International Jewellery City",
+        "address": "青岛市城阳区",
+        "focus": "Jewelry, pearls, gemstones",
+        "imageUrl": null
+      },
+      {
+        "name": "青岛义乌小商品批发市场 Qingdao Yiwu Smallware Market",
+        "address": "青岛市城阳区黑龙江中路702号",
+        "focus": "Small commodities, daily necessities",
+        "imageUrl": null
+      }
+    ]
+  },
+  "hangzhou": {
+    "tagline": "Ranked by supply chain depth, supplier density, and export track record",
+    "totalMarketsOnPage": 8,
+    "markets": [
+      {
+        "name": "四季青服装市场 Sijiqing Clothing Market",
+        "address": "杭州市江干区杭海路29-59号",
+        "focus": "China's 'Garment First Street.' 15,000 vendors, 1,200 manufacturers across 20+ buildings",
+        "imageUrl": null
+      },
+      {
+        "name": "中国丝绸城 Chinese Silk City",
+        "address": "杭州市拱墅区新华路253号",
+        "focus": "China's largest silk wholesale and retail market. 600+ enterprises",
+        "imageUrl": null
+      },
+      {
+        "name": "环北丝绸服装城 Huanbei Silk & Clothing City",
+        "address": "杭州市下城区凤起路273号",
+        "focus": "100,000 sqm across 11 floors. Floors 5-6 dedicated to silk products",
+        "imageUrl": null
+      }
+    ]
+  },
+  "quanzhou": {
+    "tagline": "1 in 5 global sneakers made here",
+    "totalMarketsOnPage": 8,
+    "markets": [
+      {
+        "name": "晋江国际鞋纺城 Jinjiang International Shoe & Textile City",
+        "address": "晋江市陈埭镇晋新北路888号",
+        "focus": "China's largest professional shoe wholesale market. 1,014 merchants, ¥49.5B turnover (2024), 60% foreign trade",
+        "imageUrl": null
+      },
+      {
+        "name": "石狮服装城 Shishi Garment City",
+        "address": "石狮市石龙路267号",
+        "focus": "600,000 sqm across 8 trading zones. 4,782 shops, 3,200+ merchants. Top 10 garment market in China",
+        "imageUrl": null
+      },
+      {
+        "name": "青创城国际网批中心 Qingchuang City International Online Wholesale",
+        "address": "石狮市西灵路",
+        "focus": "Online wholesale focus. 1,000+ stalls specialising in menswear for e-commerce sellers",
+        "imageUrl": null
+      }
+    ]
+  },
+  "kunshan": {
+    "tagline": null,
+    "totalMarketsOnPage": 6,
+    "markets": [
+      {
+        "name": "昆山经济技术开发区 Kunshan Economic & Technological Development Zone (KETD)",
+        "address": "昆山市经济技术开发区",
+        "focus": "115 km², 2,360+ foreign companies from 51 countries. Electronics assembly, optoelectronics, ODM",
+        "imageUrl": null
+      },
+      {
+        "name": "昆山综合保税区 Kunshan Comprehensive Bonded Zone",
+        "address": "昆山市综合保税区",
+        "focus": "China's first state-level export processing zone. Export manufacturing, duty-free processing",
+        "imageUrl": null
+      },
+      {
+        "name": "昆山高新技术产业开发区 Kunshan New & Hi-tech Industrial Development Zone",
+        "address": "昆山市阳澄湖科技园、吴淞江产业园",
+        "focus": "Hi-tech R&D, new materials, advanced manufacturing",
+        "imageUrl": null
+      }
+    ]
+  },
+  "danyang": {
+    "tagline": "75% of China's lenses, 50% of the world's — 400 million spectacle lenses a year",
+    "totalMarketsOnPage": null,
+    "markets": [
+      {
+        "name": "丹阳国际眼镜城 Danyang International Optical Center",
+        "address": "丹阳市眼镜城",
+        "focus": "600+ retail/wholesale shops. Finished glasses, lenses, frames, sunglasses, contact lenses, optical equipment. 6 billion+ yuan annual sales",
+        "imageUrl": null
+      },
+      {
+        "name": "丹阳眼镜产业园 Danyang Eyewear Industrial Park",
+        "address": "丹阳市司徒镇工业区",
+        "focus": "OEM/ODM lens factories, frame production, lens coating facilities. 600+ factories",
+        "imageUrl": null
+      },
+      {
+        "name": "司徒镇眼镜制造基地 Situ Town Manufacturing Zone",
+        "address": "丹阳市司徒镇",
+        "focus": "Highest concentration of lens manufacturing. Raw material suppliers, lens grinding, coating lines",
+        "imageUrl": null
+      }
+    ]
+  },
+  "suzhou": {
+    "tagline": "City of Silk — 4,700 years of heritage, 50% of China's chemical fiber fabric, two Fortune 500 textile companies",
+    "totalMarketsOnPage": 9,
+    "markets": [
+      {
+        "name": "东方丝绸市场 Eastern Silk Market",
+        "address": "苏州市吴江区盛泽镇",
+        "focus": "China's premier chemical fiber fabric hub. 7,000+ booths, RMB 100 billion annual transaction volume",
+        "imageUrl": null
+      },
+      {
+        "name": "常熟招商城 Changshu China Garment City",
+        "address": "苏州市常熟市商城中路",
+        "focus": "China's largest specialised clothing wholesale market. 9,000+ shops across 35 sub-markets",
+        "imageUrl": null
+      },
+      {
+        "name": "虎丘婚纱城 Huqiu Bridal City",
+        "address": "苏州市虎丘区虎丘山南侧",
+        "focus": "China's largest wedding dress wholesale hub. 70-80% of China's bridal market",
+        "imageUrl": null
+      }
+    ]
+  },
+  "zhengzhou": {
+    "tagline": "China's #1 rail freight hub — CR Express to Hamburg in 15 days vs 36 by sea",
+    "totalMarketsOnPage": 5,
+    "markets": [
+      {
+        "name": "郑州国际鞋城 Zhengzhou International Shoes City",
+        "address": "郑州市二七区京广中路2号",
+        "focus": "~2,500 merchants, 4 billion+ yuan annual transactions. Shoes, boots, sandals",
+        "imageUrl": null
+      },
+      {
+        "name": "火车站商圈 Railway Station Business District",
+        "address": "郑州市二七区火车站周边",
+        "focus": "Clothing wholesale concentrated around Zhengzhou Railway Station",
+        "imageUrl": null
+      },
+      {
+        "name": "银河万货城 Yinhe Wanhuo City",
+        "address": "郑州市南三环路附近",
+        "focus": "Toys, small commodities, household goods wholesale",
+        "imageUrl": null
+      }
+    ]
+  },
+  "chengdu": {
+    "tagline": "The flavors that built one of China's Eight Great Cuisines",
+    "totalMarketsOnPage": 4,
+    "markets": [
+      {
+        "name": "荷花池批发市场 Hehuachi Wholesale Market",
+        "address": "成都市金牛区北站东一路28号",
+        "focus": "Largest wholesale market in Southwest China. Clothing, shoes, housewares, textiles, accessories, sporting goods, toys",
+        "imageUrl": null
+      },
+      {
+        "name": "五块石茶叶市场 Wukuaishi Tea & Spice Market",
+        "address": "成都市金牛区蓉北商贸大道一段",
+        "focus": "Tea, spices, Sichuan peppercorns, dried goods",
+        "imageUrl": null
+      },
+      {
+        "name": "九龙广场 Kowloon Plaza",
+        "address": "成都市锦江区春熙路附近",
+        "focus": "11-story building. Clothing, electronics, suitcases, leather goods, food",
+        "imageUrl": null
+      }
+    ]
+  },
+  "chongqing": {
+    "tagline": "China's motorcycle capital and hotpot capital",
+    "totalMarketsOnPage": null,
+    "markets": [
+      {
+        "name": "朝天门批发市场 Chaotianmen Wholesale Market",
+        "address": "重庆市渝中区陕西路/草街子巷交叉口东北80米",
+        "focus": "370,000 sqm, 26 trading zones, 15,000+ stalls. Clothing, footwear, accessories, general merchandise",
+        "imageUrl": null
+      },
+      {
+        "name": "盘溪批发市场 Panxi Wholesale Market",
+        "address": "重庆市江北区盘溪",
+        "focus": "3 floors of spices, dried chilies, Sichuan peppercorns, hotpot ingredients",
+        "imageUrl": null
+      },
+      {
+        "name": "新重庆国际小商品批发中心 New Chongqing International Small Commodity Center",
+        "address": "重庆市渝北区",
+        "focus": "Large, organised wholesale complex for household items, daily necessities",
+        "imageUrl": null
+      }
+    ]
+  },
+  "pingxiang": {
+    "tagline": null,
+    "totalMarketsOnPage": 4,
+    "markets": [
+      {
+        "name": "河古庙镇工业区 Hegumiao Town Industrial Zone",
+        "address": "河北省邢台市平乡县河古庙镇工业区",
+        "focus": "Primary manufacturing hub. Highest concentration of children's vehicle factories",
+        "imageUrl": null
+      },
+      {
+        "name": "西庙村工厂集群 Ximiao Village Factory Cluster",
+        "address": "河北省邢台市平乡县河古庙镇西庙村",
+        "focus": "Dense factory cluster within Hegumiao township",
+        "imageUrl": null
+      },
+      {
+        "name": "平乡县工业区 Pingxiang County Industrial Area",
+        "address": "河北省邢台市平乡县城关区",
+        "focus": "Wider county-level manufacturing zone. Mix of larger export-oriented factories",
+        "imageUrl": null
+      }
+    ]
+  },
+  "hong-kong": {
+    "tagline": "Hong Kong is where sourcing deals are structured, not where products are made",
+    "totalMarketsOnPage": 5,
+    "markets": [
+      {
+        "name": "香港会议展览中心 HKCEC — Hong Kong Convention & Exhibition Centre",
+        "address": "1 Expo Drive, Wan Chai, Hong Kong",
+        "focus": "HKTDC trade fairs, sourcing events",
+        "imageUrl": null
+      },
+      {
+        "name": "玉器市场 Jade Market",
+        "address": "Kansu Street, Yau Ma Tei, Kowloon",
+        "focus": "Jade, pearls, gemstones, precious stones. Open daily 10:00-18:00",
+        "imageUrl": null
+      },
+      {
+        "name": "利時商場 Rise Shopping Arcade",
+        "address": "Granville Road, Tsim Sha Tsui, Kowloon",
+        "focus": "Designer jewelry, accessories, boutique sourcing",
+        "imageUrl": null
+      }
+    ]
+  }
+}

@@ -268,32 +268,30 @@ const modalName    = document.getElementById("modal-city-name");
 const modalTagline = document.getElementById("modal-tagline");
 const modalCats    = document.getElementById("modal-categories");
 const modalDesc    = document.getElementById("modal-desc");
-const modalWfText  = document.getElementById("modal-wf-text");
 const modalQr      = document.getElementById("modal-qr");
 const modalQrUrl   = document.getElementById("modal-qr-url");
 const modalClose   = document.getElementById("modal-close");
 const backBtn      = document.getElementById("back-btn");
 const track        = document.getElementById("carousel-track");
-const wrapper      = document.querySelector(".carousel-track-wrapper");
-const arrowLeft    = document.getElementById("arrow-left");
-const arrowRight   = document.getElementById("arrow-right");
+const wrapper      = document.getElementById("carousel-wrapper");
 const catGrid      = document.getElementById("categories-grid");
 
 // ── Carousel State ──
 const GAP = 12;
 const VISIBLE = 5;
 const CITY_COUNT = cities.length;
-let currentOffset = 0;
 let cardWidth = 220;
-let autoScrollTimer = null;
-let idleTimer = null;
+let scrollPos = 0;
+let scrollSpeed = 0.5; // pixels per frame
+let isPaused = false;
+let animFrame = null;
 
 // ═══════════════════════════════════════════════════════
-// CAROUSEL
+// CAROUSEL — Continuous seamless scroll
 // ═══════════════════════════════════════════════════════
 
 function renderCarousel() {
-  // Triple for infinite loop
+  // Triple for seamless infinite loop
   const tripled = [...cities, ...cities, ...cities];
   track.innerHTML = tripled
     .map((city, i) => {
@@ -324,112 +322,64 @@ function renderCarousel() {
 }
 
 function calcCardWidth() {
-  const wrapperW = wrapper.clientWidth;
   const wrapperH = wrapper.clientHeight;
+  const wrapperW = wrapper.clientWidth;
 
-  // Try height-based sizing first (fill available vertical space)
   let cardH = wrapperH * 0.94;
-  let cardW = cardH * 0.75; // 3:4 ratio
+  let cardW = cardH * 0.75;
 
-  // If 5 cards don't fit in the width, fall back to width-based
   const totalW = VISIBLE * cardW + (VISIBLE - 1) * GAP;
   if (totalW > wrapperW) {
     cardW = (wrapperW - (VISIBLE - 1) * GAP) / VISIBLE;
-    cardH = cardW / 0.75;
   }
 
   cardWidth = cardW;
-
   track.querySelectorAll(".carousel-card").forEach((card) => {
     card.style.width = cardW + "px";
-    card.style.height = cardH + "px";
+    card.style.height = (cardW / 0.75) + "px";
   });
 }
 
-function setTrackPosition(animate) {
-  track.style.transition = animate
-    ? "transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1)"
-    : "none";
-  track.style.transform = `translateX(${currentOffset}px)`;
-}
+// ── Continuous scroll animation ──
+let idleTimer = null;
+const IDLE_TIMEOUT = 10000; // 10 seconds of no mouse movement
 
-function scrollToMiddleSet(animate) {
-  // Start at the beginning of the middle (original) set
-  currentOffset = -(CITY_COUNT * (cardWidth + GAP));
-  setTrackPosition(animate);
-}
-
-function checkBoundaries() {
-  const setWidth = CITY_COUNT * (cardWidth + GAP);
-  const minOffset = -(2 * setWidth - (wrapper.clientWidth - (VISIBLE - 1) * GAP));
-
-  // If scrolled past the end of the second set, snap to first set
-  if (currentOffset < -(setWidth * 2 - cardWidth)) {
-    currentOffset += setWidth;
-    setTrackPosition(false);
+function continuousScroll() {
+  if (!isPaused) {
+    scrollPos += scrollSpeed;
+    const setWidth = CITY_COUNT * (cardWidth + GAP);
+    if (scrollPos >= setWidth) {
+      scrollPos -= setWidth;
+    }
+    track.style.transform = `translateX(${-scrollPos}px)`;
   }
-  // If scrolled before the start of the first set, snap to second set
-  else if (currentOffset > 0) {
-    currentOffset -= setWidth;
-    setTrackPosition(false);
-  }
+  animFrame = requestAnimationFrame(continuousScroll);
 }
 
-function scrollByCards(n) {
-  const step = cardWidth + GAP;
-  currentOffset -= n * step;
-  setTrackPosition(true);
-
-  // Check boundaries after animation
-  setTimeout(checkBoundaries, 600);
+function pauseScroll() {
+  isPaused = true;
 }
 
-function nextCard() {
-  scrollByCards(1);
+function resumeScroll() {
+  isPaused = false;
 }
 
-function prevCard() {
-  scrollByCards(-1);
-}
-
-// ── Touch / Swipe ──
-let touchStartX = 0;
-let touchStartTime = 0;
-
-function handleTouchStart(e) {
-  touchStartX = e.changedTouches[0].screenX;
-  touchStartTime = Date.now();
-  resetIdleTimer();
-}
-
-function handleTouchEnd(e) {
-  const diff = touchStartX - e.changedTouches[0].screenX;
-  const elapsed = Date.now() - touchStartTime;
-
-  // Only register as swipe if distance > 40px and time < 500ms
-  if (Math.abs(diff) > 40 && elapsed < 500) {
-    if (diff > 0) nextCard();
-    else prevCard();
-  }
-}
-
-// ── Auto Scroll ──
-function startAutoScroll() {
-  stopAutoScroll();
-  autoScrollTimer = setInterval(() => nextCard(), 4000);
-}
-
-function stopAutoScroll() {
-  if (autoScrollTimer) {
-    clearInterval(autoScrollTimer);
-    autoScrollTimer = null;
-  }
-}
-
+// Reset idle timer on any mouse/touch activity
 function resetIdleTimer() {
-  stopAutoScroll();
+  pauseScroll();
   clearTimeout(idleTimer);
-  idleTimer = setTimeout(() => startAutoScroll(), 12000);
+  idleTimer = setTimeout(resumeScroll, IDLE_TIMEOUT);
+}
+
+// ── Idle-based scroll: pause on any activity, resume after 10s idle ──
+function setupIdleScroll() {
+  // Any mouse movement or touch pauses, then resumes after 10s
+  document.addEventListener("mousemove", resetIdleTimer);
+  document.addEventListener("touchstart", resetIdleTimer, { passive: true });
+  document.addEventListener("click", resetIdleTimer);
+
+  // Start scrolling immediately (no mouse activity yet)
+  resumeScroll();
 }
 
 // ── Card Click ──
@@ -437,7 +387,6 @@ function handleCardClick(e) {
   const card = e.target.closest(".carousel-card");
   if (!card) return;
 
-  resetIdleTimer();
   const index = parseInt(card.dataset.index, 10);
   const city = cities[index];
 
@@ -497,6 +446,8 @@ function hideCityView() {
 // ═══════════════════════════════════════════════════════
 
 function showCityModal(city) {
+  pauseScroll();
+
   modalBg.style.backgroundImage = `url(${city.image})`;
   modalName.textContent = city.name;
   modalTagline.textContent = city.description;
@@ -504,34 +455,45 @@ function showCityModal(city) {
   modalCats.innerHTML = (city.topCategories || city.categories)
     .map((c) => `<span class="modal-cat-pill">${c}</span>`)
     .join("");
-  modalWfText.textContent = city.wfHook;
 
-  // Render wholesale markets if available
+  // Render wholesale markets as cards
   const marketsEl = document.getElementById("modal-markets");
   if (marketsEl && city.markets) {
     marketsEl.innerHTML = city.markets
-      .map((m) => `<div class="modal-market-item">${m}</div>`)
+      .map((m) => {
+        // Parse "Name — Detail" format
+        const parts = m.split(" \u2014 ");
+        const name = parts[0] || m;
+        const detail = parts[1] || "";
+        return `
+        <div class="market-card">
+          <div class="market-card-img" style="background-image: url(${city.image})">
+            <div class="market-card-img-overlay"></div>
+          </div>
+          <div class="market-card-body">
+            <div class="market-card-name">${name}</div>
+            ${detail ? `<div class="market-card-detail">${detail}</div>` : ""}
+          </div>
+        </div>`;
+      })
       .join("");
     marketsEl.parentElement.style.display = "";
   } else if (marketsEl) {
     marketsEl.parentElement.style.display = "none";
   }
 
-  // QR code to city page on official CSN
+  // QR code to city page
   const csnUrl = `https://sourcing.worldfirst.com/cities/${city.slug}`;
   const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(csnUrl)}&format=svg`;
   modalQr.src = qrApi;
   modalQrUrl.textContent = `sourcing.worldfirst.com`;
-
-  // Update coming soon to actual CTA
-  const comingSoon = document.querySelector(".modal-coming-soon span");
-  if (comingSoon) comingSoon.textContent = "Full city guide available";
 
   modal.classList.add("active");
 }
 
 function hideCityModal() {
   modal.classList.remove("active");
+  resumeScroll();
 }
 
 // ═══════════════════════════════════════════════════════
@@ -539,32 +501,22 @@ function hideCityModal() {
 // ═══════════════════════════════════════════════════════
 
 function init() {
-  // Render
   renderCarousel();
   renderCategories();
-
-  // Calculate sizes
   calcCardWidth();
-  scrollToMiddleSet(false);
 
-  // Event listeners — carousel
-  arrowLeft.addEventListener("click", () => {
-    prevCard();
-    resetIdleTimer();
-  });
-  arrowRight.addEventListener("click", () => {
-    nextCard();
-    resetIdleTimer();
-  });
+  // Start continuous scroll from the middle set
+  scrollPos = CITY_COUNT * (cardWidth + GAP);
+  track.style.transform = `translateX(${-scrollPos}px)`;
 
-  track.addEventListener("touchstart", handleTouchStart, { passive: true });
-  track.addEventListener("touchend", handleTouchEnd, { passive: true });
+  // Setup interactions
+  setupIdleScroll();
   track.addEventListener("click", handleCardClick);
 
-  // Event listeners — city view
+  // City view
   backBtn.addEventListener("click", hideCityView);
 
-  // Event listeners — modal
+  // Modal
   modalClose.addEventListener("click", hideCityModal);
   modal.addEventListener("click", (e) => {
     if (e.target === modal) hideCityModal();
@@ -580,14 +532,6 @@ function init() {
       if (e.key === "Escape" || e.key === "Backspace") hideCityView();
       return;
     }
-    if (e.key === "ArrowLeft") {
-      prevCard();
-      resetIdleTimer();
-    }
-    if (e.key === "ArrowRight") {
-      nextCard();
-      resetIdleTimer();
-    }
   });
 
   // Resize
@@ -596,13 +540,12 @@ function init() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       calcCardWidth();
-      scrollToMiddleSet(false);
+      scrollPos = CITY_COUNT * (cardWidth + GAP);
     }, 150);
   });
 
-  // Start auto-scroll after 5 seconds
-  idleTimer = setTimeout(() => startAutoScroll(), 5000);
+  // Start continuous animation
+  continuousScroll();
 }
 
-// Boot
 document.addEventListener("DOMContentLoaded", init);

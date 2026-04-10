@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>China Sourcing Navigator — Canton Fair 2026</title>
+  <title>China Sourcing Navigator — WorldFirst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏭</text></svg>">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/favicon.png">
 </head>
 <body>
   <div id="app">
@@ -21,39 +22,23 @@
       <!-- Top bar -->
       <header class="top-bar">
         <div class="top-bar-left">
-          <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo">
-        </div>
-        <div class="top-bar-right">
-          <span class="nav-title">China Sourcing Navigator</span>
+          <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo">
         </div>
       </header>
 
-      <!-- Headline -->
+      <!-- Headline — pushed down closer to cards -->
       <div class="headline-area">
         <h1 class="main-headline">Top Sourcing Cities in <span class="accent">China</span></h1>
-        <p class="main-subtitle">Where things get made — tap a city to explore</p>
-        <div class="stats-row">
-          <span class="stat">20 Sourcing Cities</span>
-          <span class="stat-dot"></span>
-          <span class="stat">150,000+ Verified Suppliers</span>
-          <span class="stat-dot"></span>
-          <span class="stat">6 Regions Across China</span>
-        </div>
+        <p class="main-subtitle">Tap a city to explore</p>
       </div>
 
       <!-- Carousel -->
       <div class="carousel-section">
-        <button class="nav-arrow nav-arrow-left" id="arrow-left" aria-label="Previous cities">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        </button>
-        <div class="carousel-track-wrapper">
+        <div class="carousel-track-wrapper" id="carousel-wrapper">
           <div class="carousel-track" id="carousel-track">
             <!-- Cards rendered by JS -->
           </div>
         </div>
-        <button class="nav-arrow nav-arrow-right" id="arrow-right" aria-label="Next cities">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
       </div>
 
       <!-- Bottom bar -->
@@ -63,12 +48,16 @@
             <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fsourcing.worldfirst.com&format=svg" alt="QR Code" class="qr-code">
           </div>
           <div class="qr-text">
-            <span class="qr-label">Full sourcing guide — 20 cities</span>
+            <span class="qr-label">Full sourcing guide</span>
             <span class="qr-url">sourcing.worldfirst.com</span>
           </div>
         </div>
         <div class="bottom-bar-right">
-          <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo-small">
+          <div class="bottom-slogan">
+            <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo-bottom">
+            <span class="slogan-text">Source smarter, pay less.</span>
+            <span class="slogan-trust">Trusted by 1.5 million businesses</span>
+          </div>
         </div>
       </footer>
     </section>
@@ -77,22 +66,18 @@
     <!-- GUANGZHOU DETAIL VIEW                           -->
     <!-- ═══════════════════════════════════════════════ -->
     <section id="city-view" class="view">
-      <!-- Blurred background image -->
       <div class="city-bg" id="city-bg"></div>
       <div class="city-overlay"></div>
 
-      <!-- Top bar -->
       <header class="top-bar city-top-bar">
         <button class="back-btn" id="back-btn" aria-label="Back to cities">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           <span>Back to Cities</span>
         </button>
-        <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo">
+        <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo">
       </header>
 
-      <!-- City content -->
       <div class="city-content">
-        <!-- City header -->
         <div class="city-header">
           <span class="city-badge">Canton Fair Host City</span>
           <h1 class="city-name">Guangzhou</h1>
@@ -106,17 +91,13 @@
           </div>
         </div>
 
-        <!-- Categories grid -->
         <div class="categories-section">
           <h2 class="categories-title">What Guangzhou <span class="accent">Makes</span></h2>
           <p class="categories-subtitle">Matched to Canton Fair phases so you know exactly where to look</p>
-          <div class="categories-grid" id="categories-grid">
-            <!-- Rendered by JS -->
-          </div>
+          <div class="categories-grid" id="categories-grid"></div>
         </div>
       </div>
 
-      <!-- Bottom bar -->
       <footer class="bottom-bar city-bottom-bar">
         <div class="bottom-bar-left">
           <div class="qr-frame">
@@ -128,13 +109,17 @@
           </div>
         </div>
         <div class="bottom-bar-right">
-          <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo-small">
+          <div class="bottom-slogan">
+            <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo-bottom">
+            <span class="slogan-text">Source smarter, pay less.</span>
+            <span class="slogan-trust">Trusted by 1.5 million businesses</span>
+          </div>
         </div>
       </footer>
     </section>
 
     <!-- ═══════════════════════════════════════════════ -->
-    <!-- CITY PREVIEW MODAL (non-Guangzhou cities)       -->
+    <!-- CITY PREVIEW MODAL                              -->
     <!-- ═══════════════════════════════════════════════ -->
     <div id="city-modal" class="modal">
       <div class="modal-content modal-enriched">
@@ -164,34 +149,22 @@
               <div class="modal-categories" id="modal-categories"></div>
             </div>
 
-            <!-- Wholesale markets -->
+            <!-- Wholesale markets — card format -->
             <div class="modal-section" id="modal-markets-section">
               <h3 class="modal-section-title">Key Wholesale Markets</h3>
-              <div class="modal-markets" id="modal-markets"></div>
+              <div class="modal-markets-grid" id="modal-markets"></div>
             </div>
 
-            <!-- WorldFirst promo -->
-            <div class="modal-wf-promo" id="modal-wf-promo">
-              <div class="modal-wf-icon">
-                <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="modal-wf-logo">
-              </div>
-              <p class="modal-wf-text" id="modal-wf-text"></p>
-            </div>
-
-            <!-- Bottom: QR + CTA -->
+            <!-- Bottom: QR right-aligned -->
             <div class="modal-bottom-row">
-              <div class="modal-qr-area">
-                <div class="modal-qr-frame">
-                  <img id="modal-qr" class="qr-code" alt="QR Code">
-                </div>
+              <div class="modal-qr-area modal-qr-right">
                 <div class="modal-qr-info">
-                  <span class="modal-qr-label">Full sourcing guide</span>
+                  <span class="modal-qr-label">Full city guide</span>
                   <span class="modal-qr-url" id="modal-qr-url"></span>
                 </div>
-              </div>
-              <div class="modal-coming-soon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                <span>Full city guide available</span>
+                <div class="modal-qr-frame modal-qr-large">
+                  <img id="modal-qr" class="qr-code" alt="QR Code">
+                </div>
               </div>
             </div>
           </div>
