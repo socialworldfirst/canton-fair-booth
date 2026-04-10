@@ -95,16 +95,22 @@ html, body {
   gap: 1.2vw;
 }
 
-.wf-logo {
-  height: 3.2vh;
+.csn-logo {
+  height: 3.5vh;
+  max-height: 40px;
   width: auto;
+  max-width: 30vw;
   opacity: 0.9;
+  object-fit: contain;
 }
 
-.nav-divider {
-  width: 1px;
+.csn-logo-small {
   height: 2.4vh;
-  background: rgba(255, 255, 255, 0.15);
+  max-height: 28px;
+  width: auto;
+  max-width: 20vw;
+  opacity: 0.7;
+  object-fit: contain;
 }
 
 .nav-title {
@@ -118,17 +124,6 @@ html, body {
 .top-bar-right {
   display: flex;
   align-items: center;
-}
-
-.canton-badge {
-  font-size: clamp(10px, 1.3vh, 14px);
-  font-weight: 600;
-  padding: 0.5vh 1.6vw;
-  border: 1.5px solid var(--wf-red);
-  border-radius: 50px;
-  color: var(--wf-red);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 /* ═══ HEADLINE AREA ═══ */
@@ -441,12 +436,6 @@ html, body {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-}
-
-.wf-logo-small {
-  height: 2.4vh;
-  width: auto;
-  opacity: 0.7;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -834,6 +823,8 @@ html, body {
   font-size: clamp(12px, 1.5vh, 18px);
   color: var(--text-secondary);
   line-height: 1.6;
+  padding-bottom: 1vh;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 /* ── Categories section ── */
@@ -844,11 +835,11 @@ html, body {
 }
 
 .modal-section-title {
-  font-size: clamp(11px, 1.3vh, 15px);
-  font-weight: 600;
+  font-size: clamp(12px, 1.5vh, 17px);
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  color: var(--wf-red);
 }
 
 .modal-categories {
@@ -858,14 +849,44 @@ html, body {
 }
 
 .modal-cat-pill {
-  font-size: clamp(10px, 1.2vh, 14px);
-  padding: 0.5vh 1.1vw;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(11px, 1.4vh, 16px);
+  padding: 0.7vh 1.4vw;
+  background: rgba(255, 0, 81, 0.1);
+  border: 1.5px solid rgba(255, 0, 81, 0.3);
+  color: rgba(255, 255, 255, 0.95);
   border-radius: 50px;
-  font-weight: 500;
+  font-weight: 600;
   white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.modal-cat-pill:hover {
+  background: rgba(255, 0, 81, 0.2);
+  border-color: rgba(255, 0, 81, 0.5);
+}
+
+/* ── Wholesale markets ── */
+.modal-markets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vh;
+}
+
+.modal-market-item {
+  font-size: clamp(11px, 1.3vh, 15px);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 1vh 1.2vw;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--wf-red);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+.modal-market-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: #fff;
 }
 
 /* ── WorldFirst promo ── */

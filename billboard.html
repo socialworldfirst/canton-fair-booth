@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>WorldFirst — Canton Fair Billboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100vw; height: 100vh; overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: #0a0015;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :root {
+    --wf-red: #FF0051;
+    --bg-deep: #0a0015;
+    --text-dim: rgba(255,255,255,0.4);
+    --text-mid: rgba(255,255,255,0.6);
+  }
+
+  .billboard {
+    width: 100vw; height: 100vh;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 25% 15%, rgba(255,0,81,0.035) 0%, transparent 50%),
+      radial-gradient(ellipse at 75% 85%, rgba(74,100,217,0.025) 0%, transparent 50%),
+      linear-gradient(180deg, #130022 0%, #0a0015 45%, #0d0018 100%);
+  }
+
+  /* ── Top bar ── */
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4vw;
+    z-index: 10;
+  }
+
+  .wf-logo {
+    height: 3.2vh;
+    opacity: 0.8;
+  }
+
+  .canton-badge {
+    font-size: clamp(9px, 1.2vh, 13px);
+    font-weight: 600;
+    padding: 0.5vh 1.4vw;
+    border: 1.5px solid var(--wf-red);
+    border-radius: 50px;
+    color: var(--wf-red);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Cards ── */
+  .card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10vh 7vw 16vh;
+    opacity: 0;
+    transform: translateY(1.5vh);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    pointer-events: none;
+  }
+
+  .card.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+  }
+
+  /* ── Card A: Hidden fee ── */
+  .card-a .headline {
+    font-size: clamp(28px, 5.5vh, 68px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 75vw;
+  }
+
+  .card-a .headline .dim {
+    color: var(--text-mid);
+  }
+
+  .card-a .headline .hit {
+    color: var(--wf-red);
+  }
+
+  .card-a .headline .punchline {
+    display: block;
+    margin-top: 1.5vh;
+    color: #fff;
+  }
+
+  /* ── Card B: 12 hours ── */
+  .card-b .headline {
+    font-size: clamp(28px, 5.5vh, 68px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 75vw;
+  }
+
+  .card-b .headline .accent {
+    color: var(--wf-red);
+  }
+
+  .card-b .headline .second-line {
+    display: block;
+    margin-top: 1.5vh;
+  }
+
+  /* ── CTA area (shared) ── */
+  .cta-area {
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5vh;
+  }
+
+  .cta-line {
+    font-size: clamp(14px, 2vh, 24px);
+    font-weight: 500;
+    color: var(--text-mid);
+    line-height: 1.4;
+  }
+
+  .cta-line strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .cta-line .num {
+    color: var(--wf-red);
+    font-weight: 800;
+  }
+
+  /* ── Bottom bar ── */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4vw;
+    z-index: 10;
+  }
+
+  .bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5vw;
+  }
+
+  .qr-frame {
+    width: 7vh;
+    height: 7vh;
+    background: #fff;
+    border-radius: 0.6vh;
+    padding: 0.4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-frame img {
+    width: 100%; height: 100%;
+  }
+
+  .qr-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2vh;
+  }
+
+  .qr-label {
+    font-size: clamp(11px, 1.4vh, 17px);
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .qr-url {
+    font-size: clamp(9px, 1.1vh, 14px);
+    color: var(--text-dim);
+  }
+
+  .bottom-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+  }
+
+  .powered-by {
+    font-size: clamp(9px, 1.1vh, 13px);
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .wf-logo-small {
+    height: 2.4vh;
+    opacity: 0.7;
+  }
+
+  /* ── Progress indicator ── */
+  .progress {
+    position: absolute;
+    bottom: 12.5vh;
+    left: 4vw;
+    display: flex;
+    gap: 0.8vw;
+    z-index: 10;
+  }
+
+  .pip {
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.15);
+    transition: all 0.5s ease;
+    width: 2.5vw;
+  }
+
+  .pip.active {
+    background: var(--wf-red);
+    width: 5vw;
+  }
+
+  /* ── Decorative elements ── */
+  .deco-line {
+    position: absolute;
+    right: 5vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 30vh;
+    background: linear-gradient(180deg, transparent 0%, rgba(255,0,81,0.15) 50%, transparent 100%);
+  }
+
+  .deco-circle {
+    position: absolute;
+    right: 4.2vw;
+    width: 1.4vh;
+    height: 1.4vh;
+    border-radius: 50%;
+    border: 2px solid rgba(255,0,81,0.25);
+  }
+
+  .deco-circle.top { top: 34%; }
+  .deco-circle.bottom { top: 64%; }
+  .deco-circle.mid {
+    top: 49%;
+    background: var(--wf-red);
+    border-color: var(--wf-red);
+    box-shadow: 0 0 12px rgba(255,0,81,0.3);
+  }
+</style>
+</head>
+<body>
+
+<div class="billboard">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo">
+    <span class="canton-badge">Canton Fair 2026</span>
+  </div>
+
+  <!-- Subtle deco -->
+  <div class="deco-line"></div>
+  <div class="deco-circle top"></div>
+  <div class="deco-circle mid"></div>
+  <div class="deco-circle bottom"></div>
+
+  <!-- CARD A: Hidden fee -->
+  <div class="card card-a active" id="cardA">
+    <div class="headline">
+      <span class="dim">Your bank charges you</span> <span class="hit">3%</span> <span class="dim">on every payment.</span>
+      <span class="punchline">They just don't call it a fee.</span>
+    </div>
+    <div class="cta-area">
+      <div class="cta-line"><span class="num">1.5 million</span> businesses already save with WorldFirst.</div>
+      <div class="cta-line"><strong>See how much you're really paying →</strong></div>
+    </div>
+  </div>
+
+  <!-- CARD B: 12 hours -->
+  <div class="card card-b" id="cardB">
+    <div class="headline">
+      You flew <span class="accent">12 hours</span> to save on sourcing.
+      <span class="second-line">Don't lose it to <span class="accent">hidden fees.</span></span>
+    </div>
+    <div class="cta-area">
+      <div class="cta-line"><span class="num">1.5 million</span> businesses keep what they save.</div>
+      <div class="cta-line"><strong>Find out how →</strong></div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress">
+    <div class="pip active" id="pip0"></div>
+    <div class="pip" id="pip1"></div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <div class="bottom-left">
+      <div class="qr-frame">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fwww.worldfirst.com%2Fglobal%2Fregister%2F&format=svg" alt="QR">
+      </div>
+      <div class="qr-text">
+        <span class="qr-label">Open your free account</span>
+        <span class="qr-url">worldfirst.com</span>
+      </div>
+    </div>
+    <div class="bottom-right">
+      <span class="powered-by">Powered by</span>
+      <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo-small">
+    </div>
+  </div>
+
+</div>
+
+<script>
+const cards = [document.getElementById('cardA'), document.getElementById('cardB')];
+const pips = [document.getElementById('pip0'), document.getElementById('pip1')];
+let current = 0;
+
+function switchCard() {
+  cards[current].classList.remove('active');
+  pips[current].classList.remove('active');
+
+  current = (current + 1) % cards.length;
+
+  cards[current].classList.add('active');
+  pips[current].classList.add('active');
+}
+
+setInterval(switchCard, 6000);
+</script>
+</body>
+</html>

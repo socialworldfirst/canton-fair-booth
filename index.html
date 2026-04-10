@@ -21,25 +21,23 @@
       <!-- Top bar -->
       <header class="top-bar">
         <div class="top-bar-left">
-          <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo">
-          <span class="nav-divider"></span>
-          <span class="nav-title">China Sourcing Navigator</span>
+          <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo">
         </div>
         <div class="top-bar-right">
-          <span class="canton-badge">Canton Fair 2026</span>
+          <span class="nav-title">China Sourcing Navigator</span>
         </div>
       </header>
 
       <!-- Headline -->
       <div class="headline-area">
-        <h1 class="main-headline">Where Things Get <span class="accent">Made</span></h1>
-        <p class="main-subtitle">The factory cities powering Canton Fair — tap a city to explore</p>
+        <h1 class="main-headline">Top Sourcing Cities in <span class="accent">China</span></h1>
+        <p class="main-subtitle">Where things get made — tap a city to explore</p>
         <div class="stats-row">
-          <span class="stat">7 Manufacturing Hubs</span>
+          <span class="stat">20 Sourcing Cities</span>
           <span class="stat-dot"></span>
-          <span class="stat">12+ Product Categories</span>
+          <span class="stat">150,000+ Verified Suppliers</span>
           <span class="stat-dot"></span>
-          <span class="stat">Pearl River Delta & Beyond</span>
+          <span class="stat">6 Regions Across China</span>
         </div>
       </div>
 
@@ -62,16 +60,15 @@
       <footer class="bottom-bar">
         <div class="bottom-bar-left">
           <div class="qr-frame">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fsocialworldfirst.github.io%2Fchina-sourcing-navigator%2F&format=svg" alt="QR Code" class="qr-code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fsourcing.worldfirst.com&format=svg" alt="QR Code" class="qr-code">
           </div>
           <div class="qr-text">
-            <span class="qr-label">Scan for the full sourcing guide</span>
-            <span class="qr-url">chinasourcingnavigator.com</span>
+            <span class="qr-label">Full sourcing guide — 20 cities</span>
+            <span class="qr-url">sourcing.worldfirst.com</span>
           </div>
         </div>
         <div class="bottom-bar-right">
-          <span class="powered-by">Powered by</span>
-          <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo-small">
+          <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo-small">
         </div>
       </footer>
     </section>
@@ -90,7 +87,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
           <span>Back to Cities</span>
         </button>
-        <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo">
+        <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo">
       </header>
 
       <!-- City content -->
@@ -123,16 +120,15 @@
       <footer class="bottom-bar city-bottom-bar">
         <div class="bottom-bar-left">
           <div class="qr-frame">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fsocialworldfirst.github.io%2Fchina-sourcing-navigator%2Fcities%2Fguangzhou&format=svg" alt="QR Code" class="qr-code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fsourcing.worldfirst.com%2Fcities%2Fguangzhou&format=svg" alt="QR Code" class="qr-code">
           </div>
           <div class="qr-text">
             <span class="qr-label">Full Guangzhou sourcing guide</span>
-            <span class="qr-url">chinasourcingnavigator.com/guangzhou</span>
+            <span class="qr-url">sourcing.worldfirst.com/cities/guangzhou</span>
           </div>
         </div>
         <div class="bottom-bar-right">
-          <span class="powered-by">Powered by</span>
-          <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="wf-logo-small">
+          <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="csn-logo-small">
         </div>
       </footer>
     </section>
@@ -168,10 +164,16 @@
               <div class="modal-categories" id="modal-categories"></div>
             </div>
 
+            <!-- Wholesale markets -->
+            <div class="modal-section" id="modal-markets-section">
+              <h3 class="modal-section-title">Key Wholesale Markets</h3>
+              <div class="modal-markets" id="modal-markets"></div>
+            </div>
+
             <!-- WorldFirst promo -->
             <div class="modal-wf-promo" id="modal-wf-promo">
               <div class="modal-wf-icon">
-                <img src="images/wf-logo-reversed.webp" alt="WorldFirst" class="modal-wf-logo">
+                <img src="images/csn-logo.png" alt="Ant International | WorldFirst" class="modal-wf-logo">
               </div>
               <p class="modal-wf-text" id="modal-wf-text"></p>
             </div>
@@ -188,8 +190,8 @@
                 </div>
               </div>
               <div class="modal-coming-soon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                <span>City guide launching soon</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <span>Full city guide available</span>
               </div>
             </div>
           </div>
