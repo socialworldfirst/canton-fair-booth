@@ -55,13 +55,13 @@ html, body {
 /* ═══ TOP BAR ═══ */
 .top-bar {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 var(--side-pad); height: 5vh; flex-shrink: 0;
+  padding: 2vh var(--side-pad) 0; height: 6vh; flex-shrink: 0;
 }
 .top-bar-left { display: flex; align-items: center; gap: 1.2vw; }
 
 .wf-logo {
-  height: 4vh; max-height: 44px;
-  width: auto; opacity: 0.95;
+  height: 2.8vh; max-height: 30px;
+  width: auto;
 }
 
 /* ═══ HEADLINE AREA ═══ */
@@ -72,12 +72,12 @@ html, body {
   display: flex; flex-direction: column;
   align-items: center; justify-content: flex-end;
   flex-grow: 1;
-  max-height: 22vh;
+  max-height: 18vh;
 }
 
 .main-headline {
   font-size: clamp(30px, 5.5vh, 68px);
-  font-weight: 800; letter-spacing: -0.03em;
+  font-weight: 600; letter-spacing: -0.03em;
   line-height: 1.05; margin-bottom: 0.6vh;
 }
 
@@ -86,13 +86,33 @@ html, body {
 .main-subtitle {
   font-size: clamp(13px, 1.8vh, 22px);
   color: var(--text-secondary); font-weight: 400;
+  margin-top: 8px;
 }
 
 /* ═══ CAROUSEL — seamless continuous scroll ═══ */
 .carousel-section {
   flex: 1; display: flex; align-items: stretch;
   padding: 0.5vh 0; position: relative; min-height: 0;
+  cursor: grab;
 }
+.carousel-section.dragging { cursor: grabbing; }
+
+/* ── Nav Arrows ── */
+.nav-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 5; width: clamp(36px, 5vh, 56px); height: clamp(36px, 5vh, 56px);
+  border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.7); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s ease;
+  opacity: 0.6;
+}
+.nav-arrow:hover { opacity: 1; background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.3); }
+.nav-arrow:active { transform: translateY(-50%) scale(0.92); }
+.nav-arrow-left { left: 1.2vw; }
+.nav-arrow-right { right: 1.2vw; }
 
 .carousel-track-wrapper {
   flex: 1; overflow: hidden; position: relative;
@@ -188,28 +208,27 @@ html, body {
 /* ═══ BOTTOM BAR ═══ */
 .bottom-bar {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 var(--side-pad); height: 9vh; flex-shrink: 0;
+  padding: 0 var(--side-pad) 2vh; height: 11vh; flex-shrink: 0;
 }
-.bottom-bar-left { display: flex; align-items: center; gap: 1.2vw; }
+.bottom-bar-left { display: flex; align-items: center; gap: 1.5vw; }
 .bottom-bar-right { display: flex; align-items: center; }
 
 .qr-frame {
-  width: 6vh; height: 6vh; background: white;
-  border-radius: var(--radius-sm); padding: 0.4vh;
+  width: 7.5vh; height: 7.5vh; background: white;
+  border-radius: var(--radius-sm); padding: 0.5vh;
   display: flex; align-items: center; justify-content: center;
 }
 .qr-code { width: 100%; height: 100%; display: block; }
 
-.qr-text { display: flex; flex-direction: column; gap: 0.2vh; }
-.qr-label { font-size: clamp(10px, 1.4vh, 16px); font-weight: 600; color: var(--text-primary); }
-.qr-url { font-size: clamp(8px, 1.1vh, 13px); color: var(--text-muted); }
+.qr-text { display: flex; flex-direction: column; gap: 0.3vh; }
+.qr-label { font-size: clamp(12px, 1.7vh, 20px); font-weight: 600; color: var(--text-primary); }
+.qr-url { font-size: clamp(10px, 1.3vh, 16px); color: var(--text-muted); }
 
 /* ── Bottom right slogan ── */
 .bottom-slogan {
-  display: flex; flex-direction: column; align-items: flex-end; gap: 0.4vh;
-}
-.wf-logo-bottom {
-  height: 3.2vh; max-height: 36px; width: auto; opacity: 0.9; margin-bottom: 0.4vh;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.3vh;
+  text-align: right;
+  margin-bottom: 0.5vh;
 }
 .slogan-text {
   font-size: clamp(14px, 1.8vh, 22px); font-weight: 700;
@@ -408,14 +427,9 @@ html, body {
 .market-card-img {
   width: 100%; height: 8vh;
   background-size: cover; background-position: center;
-  position: relative;
-}
-.market-card-img-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(10,0,21,0.7) 100%);
 }
 
-.market-card-body { padding: 0.8vh 0.8vw; }
+.market-card-body { padding: 1vh 0.8vw; }
 .market-card-name {
   font-size: clamp(10px, 1.2vh, 14px); font-weight: 700;
   color: var(--text-primary); line-height: 1.3; margin-bottom: 0.3vh;

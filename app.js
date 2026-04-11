@@ -10,8 +10,9 @@ const cities = [
     categories: ["Apparel", "Leather", "Beauty"],
     topCategories: ["Apparel & Fashion", "Leather Goods & Bags", "Beauty & Cosmetics", "Textiles & Fabrics", "Toys & Gifts", "Furniture & Home", "Jewelry & Accessories", "Electronics Accessories"],
     description: "Canton Fair host city. China\u2019s oldest trade capital.",
-    longDesc: "Home to 11+ wholesale markets within 30 minutes of Canton Fair. Shahe ships 3,000+ tons of clothing daily. Shisanhang runs fast fashion from sketch to rack in 72 hours. 1,857 cosmetics manufacturers produce nearly a third of China\u2019s output.",
-    markets: ["\u5341\u4e09\u884c Shisanhang \u2014 6,000+ vendors, fast fashion", "\u767d\u9a6c Baima \u2014 2,000 shops, 10 floors, ISO 9001", "\u6c99\u6cb3 Shahe \u2014 3,000+ tons of clothing daily"],
+    longDesc: "Where China's fashion supply chain begins. Shahe ships 3,000+ tons of clothing daily and launches 2,000+ new styles every morning. Shisanhang runs fast fashion from sketch to rack in under 72 hours. 1,857 cosmetics manufacturers produce nearly a third of China's output. Zhongda — Asia's largest fabric market — feeds the entire Pearl River Delta garment industry.",
+    markets: ["十三行 Shisanhang — Mid-range fashion, 6,000+ vendors", "白马服装市场 Baima Garment Market — Premium, brand-focused fashion", "沙河服装批发市场 Shahe Clothing Market — Budget-to-mid fashion, high volume"],
+    marketImages: ["https://framerusercontent.com/images/3JBq0IG4UQmBzgVxW0yumtXRJWw.png", "https://framerusercontent.com/images/ApmESNM70IE8bYo9gvpbKPmcAvw.png", "https://framerusercontent.com/images/utg4Q43AFCxaNW7I8WCBlp0OrzM.png"],
     wfHook: "Pay Guangzhou suppliers in CNY same-day via World Account \u2014 90% of payments arrive within hours.",
     image: "images/guangzhou.webp",
     hasDetail: true,
@@ -22,8 +23,9 @@ const cities = [
     categories: ["Electronics", "Hardware", "Drones"],
     topCategories: ["Consumer Electronics", "Smart Hardware & IoT", "LED & Lighting", "Drones & Robotics", "Phone Accessories", "Consumer Audio", "Jewelry & Gold", "Fashion & Apparel"],
     description: "China\u2019s hardware capital. Prototype to production in weeks.",
-    longDesc: "Huaqiangbei: 1.45 km\u00b2, 40+ markets, 20,000 merchants, 480B+ RMB annual transactions. SEG Plaza: 3,000+ component shops across 10 floors. 70%+ of global consumer drone production runs through this city. Shuibei handles 60% of China\u2019s gold jewelry trade.",
-    markets: ["\u8d5b\u683c SEG Plaza \u2014 3,000+ component shops, 10 floors", "\u534e\u5f3a Huaqiang Electronics \u2014 7 floors, 3,000+ stores", "\u5357\u6cb9 Nanyou \u2014 4,000+ merchants, original-design fashion"],
+    longDesc: "Huaqiangbei: 1.45 km², 40+ markets, 20,000 merchants, 480B+ RMB in annual transactions. From concept to working prototype in under two weeks — nowhere else on earth matches this speed. DJI's hometown — 70%+ of global consumer drone production. Shuibei handles 60% of China's gold jewelry trade, gold 200+ RMB/gram below branded retail.",
+    markets: ["赛格电子市场 SEG Electronics Market — Electronics components, 10 floors, 3,000+ booths", "华强电子世界 Huaqiang Electronics World — 7 floors, 3,000+ stores", "远望数码城 Yuanwang Digital Mall — Phones, digital products, accessories"],
+    marketImages: ["https://framerusercontent.com/images/RFGyalZS9fe1rZZS4Le54IVcmw.webp", "https://framerusercontent.com/images/CRf9MGiFqXmBmFEhnbglsqy3Nuk.webp", "https://framerusercontent.com/images/WXR1t7UCpvpllLkmEKIKGDGM2H8.webp"],
     wfHook: "Lock in USD\u2192CNY rates before you send \u2014 protect margins on high-value electronics orders.",
     image: "images/shenzhen.webp",
     hasDetail: false,
@@ -34,8 +36,9 @@ const cities = [
     categories: ["Electronics", "Toys", "Moulds"],
     topCategories: ["Plastics & Moulds", "Electronics Assembly", "Furniture & Home", "Toys & Games", "Footwear", "Apparel & Knitwear", "Paper & Packaging", "Precision Parts"],
     description: "The world\u2019s factory floor. 1 in 5 smartphones built here.",
-    longDesc: "10,000+ electronics factories. 1 in 5 smartphones worldwide. 75% of global toy exports. Dalang produces 900 million sweaters a year. Houjie: 5km Furniture Avenue with 600+ companies. South China\u2019s largest plastic mould cluster.",
-    markets: ["\u5bcc\u6c11 Fumin \u2014 300,000 sqm, women\u2019s fashion", "\u9ec4\u6cb3 Yellow River Fashion City \u2014 Korean-style, menswear", "Houjie Furniture Avenue \u2014 5km, 600+ companies"],
+    longDesc: "Electronic information industry crossed the ¥1 trillion mark — 1 in 5 smartphones worldwide built here. South China's precision mould capital. 1 in 3 Barbie dolls manufactured here, 500 million+ pairs of shoes exported annually. Dalang produces 900 million sweaters a year. Houjie: 5km Furniture Avenue with 600+ companies.",
+    markets: ["富民服装批发市场 Fumin Clothing Market — 300,000 sqm, women's fashion", "黄河时装城 Yellow River Fashion City — Korean-style, menswear", "大莹女装批发城 Dayin Women's Wear City — Mid-range women's fashion, e-commerce hub"],
+    marketImages: ["https://framerusercontent.com/images/VQPAF40inTDYpA6yfSvg986D8WE.webp", "https://framerusercontent.com/images/jPPpoGGedMZfKfOLG5DZMoGXevU.webp", "https://framerusercontent.com/images/zoURNvcLKjSrCVOS0bHvwQ4B8t4.webp"],
     wfHook: "Verify supplier bank accounts against business registrations \u2014 built into every WorldFirst payment.",
     image: "images/dongguan.webp",
     hasDetail: false,
@@ -46,8 +49,9 @@ const cities = [
     categories: ["Furniture", "Ceramics", "Aluminium"],
     topCategories: ["Furniture & Home", "Ceramics & Tiles", "Aluminium & Metals", "Lighting", "Building Materials", "Appliances", "Doors & Windows", "Sanitaryware"],
     description: "World\u2019s largest furniture market. 54% of China\u2019s tiles.",
-    longDesc: "7,000+ furniture factories. 20 million sqm of showroom space. 1,000+ ceramic tile production lines producing 1.2 billion sqm annually \u2014 54% of China\u2019s output. Midea and Galanz HQ. Shunde produces 50%+ of the world\u2019s air conditioners.",
-    markets: ["\u7f57\u6d6e\u5bab Louvre \u2014 380,000 sqm, 2M visitors/year", "\u7ea2\u661f\u7f8e\u51ef\u9f99 Red Star Macalline \u2014 wholesale format, 90% factory-direct", "\u5357\u5e84 Nanzhuang \u2014 2,000+ ceramic enterprises"],
+    longDesc: "Produces 50–75% of all furniture made in China. 7,000+ factories, 20 million sqm of showrooms. 54% of China's tile production, 25% of global output — 5,000 years of ceramic heritage. Midea and Galanz HQ — Shunde produces 50%+ of the world's air conditioners.",
+    markets: ["罗浮宫国际家具博览中心 Louvre Furniture Expo — 380,000 sqm, 2M visitors/year", "红星美凯龙乐从 Red Star Macalline Lecong — Furniture wholesale", "顺联家具城北区 Sunlink Furniture City North — Lecong/Longjiang corridor"],
+    marketImages: ["https://framerusercontent.com/images/p3FiQrTRxFg2hQo5d9Lw12FikG4.webp", "https://framerusercontent.com/images/4zGuwGJbZqzjOVcafET526FDQaU.webp", "https://framerusercontent.com/images/7RVWS73ylRzSSayYkAKhyFes.webp"],
     wfHook: "Send CNY payments to multiple Foshan suppliers from one World Account \u2014 no intermediary bank fees.",
     image: "images/foshan.webp",
     hasDetail: false,
@@ -58,8 +62,9 @@ const cities = [
     categories: ["Commodities", "Christmas", "Socks"],
     topCategories: ["Small Commodities", "Hosiery & Socks", "Jewelry & Accessories", "Toys & Novelties", "Christmas & Seasonal", "Packaging & Print", "Hardware & Tools", "Crafts & Gifts"],
     description: "World\u2019s largest small commodities market. 75,000 booths.",
-    longDesc: "75,000 booths across 26 product categories. 2.1 million products. 6.4 million sqm of trading space. 220,000 daily visitors. Datang Town produces 27 billion pairs of socks annually \u2014 70% of China\u2019s market. 60\u201380% of the world\u2019s Christmas decorations.",
-    markets: ["Int\u2019l Trade City D1 \u2014 toys, jewelry, crafts, 10,000+ booths", "Int\u2019l Trade City D2 \u2014 bags, hardware, electronics", "Int\u2019l Trade City D3 \u2014 stationery, cosmetics, sports"],
+    longDesc: "75,000 booths, 2.1 million products across 26 categories. 6.4 million sqm of trading space, 220,000 daily visitors. Datang produces 27 billion pairs of socks annually — 70% of China's market. 60–80% of the world's Christmas decorations. 836.5 billion yuan in exports to 210+ countries.",
+    markets: ["国际商贸城一区 Int'l Trade City D1 — Toys, jewelry, crafts, 10,000+ booths", "国际商贸城二区 Int'l Trade City D2 — Bags, hardware, electronics, 8,000+ booths", "国际商贸城三区 Int'l Trade City D3 — Stationery, cosmetics, office supplies"],
+    marketImages: ["https://framerusercontent.com/images/y44FvhOiloMiOniBOc7upEIIBUg.webp", "https://framerusercontent.com/images/xquJBcWwwptDtvnb0LWA6IOvnKo.webp", "https://framerusercontent.com/images/wOiAAselZTkXJmZfVHoFlGNTNvc.webp"],
     wfHook: "Pay Yiwu\u2019s 1688 suppliers directly in CNY with 1688 World Pay \u2014 no trading company markup.",
     image: "images/yiwu.webp",
     hasDetail: false,
@@ -70,8 +75,9 @@ const cities = [
     categories: ["Kitchenware", "Appliances", "Tools"],
     topCategories: ["Home Products & Kitchenware", "Hardware & Tools", "Small Appliances", "Stationery & Office", "Auto Parts", "Textiles & Garments", "Plastics", "Die-Casting Moulds"],
     description: "Major port city. ~60% of world\u2019s small appliances from Cixi.",
-    longDesc: "China\u2019s second-busiest port. Cixi produces ~60% of the world\u2019s small appliances. Yuyao: 2,000+ plastic manufacturers. Beilun: 25% of China\u2019s die-casting mould output. 200+ container routes globally. 70% of suppliers provide product development within 15 days.",
-    markets: ["Cixi Small Appliance Cluster \u2014 ~60% global output", "Yuyao Plastic Industrial Zone \u2014 \u201cChina Plastic City\u201d", "Beilun Mould District \u2014 25% of China\u2019s die-casting"],
+    longDesc: "Cixi makes ~60% of the world's small home appliances — 2,000 factories, 10,000 component suppliers. 25% of China's die-casting mold output from Beilun district alone. Yuyao and Cixi produce for global housewares brands — 15–30% cheaper than competing regions. Capital of Chinese Stationery — one-fifth of national output.",
+    markets: ["慈溪小家电产业集群 Cixi Small Appliance Cluster — ~60% global output", "余姚中国塑料城 Yuyao Plastic Industrial Zone — \"China Plastic City\"", "慈溪厨具制造 Cixi Kitchenware Zone — Kitchenware and cookware manufacturing"],
+    marketImages: ["https://framerusercontent.com/images/6liB6XhWFmPYl0Twht2i4c3cPM.webp", "https://framerusercontent.com/images/6ivnbC3WtzG4kLlibG2Ifnz5PcA.webp", "https://framerusercontent.com/images/zcp1ZB94DlBXz4CbpdgdS7BxY.webp"],
     wfHook: "Hold USD, EUR, GBP and 17 more currencies \u2014 convert to CNY only when rates are right.",
     image: "images/ningbo.webp",
     hasDetail: false,
@@ -82,8 +88,9 @@ const cities = [
     categories: ["Trade Hub", "Fashion", "Auto"],
     topCategories: ["Trade Services & Logistics", "Fashion & Design", "Automotive Parts", "Semiconductors", "Chemicals", "F&B Equipment", "Medical Devices", "Luxury Goods"],
     description: "World\u2019s busiest port. Supply chain command centre.",
-    longDesc: "Port of Shanghai: 55+ million TEU \u2014 world\u2019s busiest 16 years running. China\u2019s first Free Trade Zone. Qipu Road: 100+ year apparel wholesale hub. South Bund: 285 bespoke tailoring shops, custom suits at \u2153 European pricing.",
-    markets: ["\u4e03\u6d66\u8def Qipu Road \u2014 100+ year apparel wholesale, 680m street", "South Bund Fabric Market \u2014 285 tailoring shops, bespoke", "\u51ef\u65cb\u57ce Kaixuancheng \u2014 20,000+ sqm fashion wholesale"],
+    longDesc: "World's busiest port, China's first FTZ, and HQ of every major freight forwarder and inspection agency. South Bund Fabric Market: 285 tailor shops, world-famous bespoke tailoring at ⅓ European pricing. Zhangjiang Hi-Tech Park: China's semiconductor capital — 307 IC enterprises, 480 billion yuan revenue.",
+    markets: ["七浦路服装批发市场 Qipu Road Clothing Market — 680m street, 10+ mall buildings", "南外滩面料市场 South Bund Fabric Market — 285 tailor shops, bespoke", "凯旋城服装市场 Kaixuancheng Clothing Market — 20,000+ sqm fashion wholesale"],
+    marketImages: ["https://framerusercontent.com/images/k9igOM1Knh1yLEorzbcjA2Cgwrk.webp", "https://framerusercontent.com/images/FLkivyINxzBhEdDSU9fIjlqbAM.webp", "https://framerusercontent.com/images/XDylLDY1n19glburnlUnBSBhfo.webp"],
     wfHook: "Open a free WorldFirst World Account in minutes \u2014 collect, hold, and pay in 20+ currencies.",
     image: "images/shanghai.webp",
     hasDetail: false,
@@ -94,8 +101,9 @@ const cities = [
     categories: ["Lighting", "Appliances", "Locks"],
     topCategories: ["Lighting & LED", "Electrical Appliances", "Locks & Hardware", "Furniture", "Apparel"],
     description: "China\u2019s lighting capital. 70% of national production.",
-    longDesc: "Guzhen: 30,000+ lighting companies producing 70% of China\u2019s lighting output. 100+ billion RMB annual cluster output. Xiaolan: one-third of China\u2019s lock exports with 150+ smart lock manufacturers. Shaxi: 4,000+ casual wear companies.",
-    markets: ["Star Alliance Global Lighting Center \u2014 premium, international", "Huayi International Lighting \u2014 200,000 sqm, R&D", "Century Lighting Square \u2014 mid-range bulk sourcing"],
+    longDesc: "Guzhen produces 70% of China's lighting — 30,000+ companies, from LED chips to crystal chandeliers. Vertically integrated supply chain from raw materials to finished products. Xiaolan: China's Hardware Manufacture Base and Lock Export Base — one-third of China's lock exports, 150+ smart lock manufacturers.",
+    markets: ["星光联盟 Star Alliance Global Lighting — 360,000 sqm, international pavilion", "华艺广场 Huayi International Lighting Plaza — 200,000 sqm, R&D tech park", "世纪灯饰广场 Century Lighting Square — Mid-to-high-end lighting"],
+    marketImages: ["https://framerusercontent.com/images/m1EKdxXU3ZU7mmDBMyFl2jfAug.webp", "https://framerusercontent.com/images/g8hwtRsA0BkBYKo8h8UcKrmYPnI.webp", "https://framerusercontent.com/images/jFVHwZtVKmLjoSNkTO3XkSGZdc.webp"],
     wfHook: "Pay multiple lighting suppliers in one batch \u2014 WorldFirst bulk payments save time and fees.",
     image: "images/zhongshan.webp",
     hasDetail: false,
@@ -106,8 +114,9 @@ const cities = [
     categories: ["Silk", "Precision", "Bridal"],
     topCategories: ["Silk & Textiles", "Precision Components", "Electronics Assembly", "Metal Products", "Bridal & Wedding"],
     description: "City of Silk. Precision manufacturing. Bridal capital.",
-    longDesc: "4,700 years of silk heritage. Shengze: 13+ billion metres of fabric annually, 50% of China\u2019s chemical fiber market. Huqiu: 1,200 bridal factories producing 70\u201380% of China\u2019s wedding dresses. SIP hosts 108 Fortune Global 500 companies.",
-    markets: ["Eastern Silk Market \u2014 7,000+ booths, 100B RMB", "Changshu Garment City \u2014 9,000+ shops, 35 markets", "Huqiu Bridal City \u2014 1,200 factories, 70\u201380% of China"],
+    longDesc: "City of Silk with 4,700 years of heritage. Produces approximately half of China's chemical fiber fabric. Shengze houses thousands of production enterprises with massive annual fabric output. Huqiu: 70–80% of China's wedding dresses. Electronic information industry at RMB 1,431.3 billion in output.",
+    markets: ["东方丝绸市场 Eastern Silk Market — 7,000+ booths, 100B RMB annual", "常熟招商城 Changshu Garment City — 9,000+ shops, 35 sub-markets", "虎丘婚纱城 Huqiu Bridal City — 70–80% of China's wedding dresses"],
+    marketImages: ["https://framerusercontent.com/images/YWTjmPW59kw2dHlrk0szualsm00.webp", "https://framerusercontent.com/images/jKFiXErx9OBfnvV6y6mLbJXpBI.webp", "https://framerusercontent.com/images/G21w24MVl1zaoR3DqwBslxBSVt4.webp"],
     wfHook: "Pay Suzhou\u2019s precision manufacturers in CNY \u2014 no double conversion through USD.",
     image: "images/suzhou.webp",
     hasDetail: false,
@@ -118,8 +127,9 @@ const cities = [
     categories: ["Eyewear", "Fitness", "Stone"],
     topCategories: ["Eyewear & Sunglasses", "Fitness Equipment", "Stone & Building Materials", "LED & Lighting", "Tea & Food", "Tungsten & Minerals"],
     description: "80% of world\u2019s sunglasses. Stone and fitness hub.",
-    longDesc: "80% of world\u2019s sunglasses manufactured here. 6 of 10 global home treadmills made in the region. World\u2019s #1 stone import/export hub. 40% of China\u2019s LED lighting exports originate from Xiamen. Historic tea export gateway since 1689.",
-    markets: ["Jingshang Eyewear Market \u2014 sunglasses and optical frames", "Int\u2019l Stone Center \u2014 56,000 sqm showroom", "Xiashang Wucun Lighting City \u2014 LED and commercial"],
+    longDesc: "80% of the world's sunglasses are made here — the largest global manufacturer, built from Taiwanese investment in the late 1980s. 6 out of 10 home treadmills globally are 'Made in Xiamen.' World's #1 stone import/export port. 40% of China's LED lighting exports. Historic tea export gateway since 1689.",
+    markets: ["精商眼镜批发市场 Jingshang Eyewear Market — Sunglasses, optical frames", "厦门国际石材中心 Xiamen Int'l Stone Center — 56,000 sqm showroom", "夏商五村灯饰城 Xiashang Wucun Lighting City — LED, commercial lighting"],
+    marketImages: ["https://framerusercontent.com/images/fhrFJUa8xGG2hySMG4yDllBqbsk.webp", "https://framerusercontent.com/images/ZIckuI0VmqhwnAwhPSGLl24kblw.webp", "https://framerusercontent.com/images/yNyxQn6XoGgL75ASJEtoHkcIs8.webp"],
     wfHook: "Pay Chinese suppliers directly \u2014 instant confirmation when they\u2019re on WorldFirst.",
     image: "images/xiamen.webp",
     hasDetail: false,
@@ -130,8 +140,9 @@ const cities = [
     categories: ["Tires", "Appliances", "Eyelashes"],
     topCategories: ["Tires & Rubber", "Home Appliances", "Eyelashes & Beauty", "Marine Equipment", "Food & Beverage", "Textiles & Garments"],
     description: "Haier, Hisense, and 70% of the world\u2019s eyelashes.",
-    longDesc: "700+ rubber enterprises, 35+ tire plants. Haier: $55.9B global revenue. Hisense: 14% global TV market share. Pingdu: 70% of world\u2019s false eyelashes, 5,000+ companies, 10B+ RMB output. Qingdao Port: 230+ international shipping routes.",
-    markets: ["Jimo Clothing Market \u2014 9,000+ shops, knitwear hub", "Qingdao Int\u2019l Jewellery City \u2014 pearls, gemstones", "Yiwu Smallware Market \u2014 daily necessities"],
+    longDesc: "China's Rubber Valley — 700+ enterprises, 35+ tire plants, sister city with Akron, Ohio. The only city home to both the #1 global appliance brand (Haier) and the #2 global TV brand (Hisense). 70% of the world's false eyelashes come from Pingdu — 5,000+ companies, a 50-year legacy.",
+    markets: ["即墨服装批发市场 Jimo Clothing Market — 9,000+ shops, knitwear hub", "青岛国际珠宝城 Qingdao Int'l Jewellery City — Pearls, gemstones", "青岛义乌小商品市场 Qingdao Yiwu Smallware Market — Daily necessities"],
+    marketImages: ["https://framerusercontent.com/images/jDnfL2DeWzQ4j0VuPEcpuLkvTw.webp", "https://framerusercontent.com/images/RLjIoRBI9on7VDdX1AYHMXpJ0MU.webp", "https://framerusercontent.com/images/A36aEDJAMSxAB2p1JVxhImZK9s0.webp"],
     wfHook: "Hold multiple currencies and pay when rates are right \u2014 protect margins on bulk orders.",
     image: "images/qingdao.webp",
     hasDetail: false,
@@ -142,8 +153,9 @@ const cities = [
     categories: ["E-commerce", "Silk", "Digital"],
     topCategories: ["E-commerce & Digital Trade", "Silk & Textiles", "Tea", "Fashion & Apparel", "AI & Software"],
     description: "Alibaba HQ. E-commerce and digital trade capital.",
-    longDesc: "Home to Alibaba, 1688, and China\u2019s largest digital trade ecosystem. Sijiqing: one of China\u2019s largest garment wholesale markets. Rich silk heritage. 1688 headquarters \u2014 the gateway to online sourcing from Chinese factories.",
-    markets: ["Sijiqing \u2014 one of China\u2019s largest garment wholesale hubs", "1688 HQ \u2014 online sourcing gateway to Chinese factories", "China Silk City \u2014 traditional silk and fabric market"],
+    longDesc: "Alibaba HQ, 1688 platform, 65,000+ cross-border sellers — China's undisputed e-commerce capital. 1688 connects over 100 million active buyers. Sijiqing: China's 'Garment First Street' with 15,000 vendors across 20+ buildings. 2,000 years of silk heritage. Processes 70% of cross-border payment settlements nationally.",
+    markets: ["四季青服装市场 Sijiqing Clothing Market — 15,000 vendors, 20+ buildings", "中国丝绸城 Chinese Silk City — 600+ enterprises, largest silk market", "环北丝绸服装城 Huanbei Silk & Clothing City — 100,000 sqm, 11 floors"],
+    marketImages: ["https://framerusercontent.com/images/hIsnYtYsABadVOOD3gXJiBW51k.webp", "https://framerusercontent.com/images/GqUSJ8rTsBpQADzFoMj6cc27zwE.webp", "https://framerusercontent.com/images/wUY7rwAYMKXzagppKhOGo9cgXrk.webp"],
     wfHook: "Pay 1688 suppliers directly in CNY with 1688 World Pay \u2014 no trading company markup.",
     image: "images/hangzhou.webp",
     hasDetail: false,
@@ -154,8 +166,9 @@ const cities = [
     categories: ["Sportswear", "Footwear", "Stone"],
     topCategories: ["Sportswear & Athletic Wear", "Footwear", "Stone & Ceramics", "Tea", "Textiles"],
     description: "China\u2019s sportswear capital. Anta, Peak, 361\u00b0 HQ.",
-    longDesc: "Home to Anta, Peak, and 361\u00b0 \u2014 China\u2019s sportswear giants. Jinjiang: China\u2019s shoe capital with thousands of footwear factories. Shishi: major textile and garment production hub. Ancient Maritime Silk Road starting point.",
-    markets: ["Jinjiang \u2014 China\u2019s shoe capital, sportswear hub", "Shishi \u2014 textile and garment production cluster", "Nan\u2019an Shuitou \u2014 stone processing and trading"],
+    longDesc: "1 in 5 global sneakers made here — 7,000+ enterprises, over 1 billion pairs a year from Chendai Town alone. Home to Anta (¥62.36B revenue), Peak, 361°, and Xtep. Shishi Garment City: Asia's largest — 4,782 shops, ¥30 billion annual transactions. Nan'an produces 65% of China's stone slabs and 70% of its plumbing valves.",
+    markets: ["晋江国际鞋纺城 Jinjiang Shoe & Textile City — 1,014 merchants, ¥49.5B turnover", "石狮服装城 Shishi Garment City — 600,000 sqm, 4,782 shops", "青创城国际网批中心 Qingchuang City Online Wholesale — 1,000+ stalls, e-commerce"],
+    marketImages: ["https://framerusercontent.com/images/39TcllDvZzaIUrWNhV8IVYicDys.webp", "https://framerusercontent.com/images/0rz90LXJS1bSHxyXJqzyvv71M.webp", "https://framerusercontent.com/images/HKH3cbHJ5Dj6XFdk19PXNAdMZM.webp"],
     wfHook: "Verify your supplier\u2019s business license before sending payment \u2014 built into WorldFirst.",
     image: "images/quanzhou.webp",
     hasDetail: false,
@@ -166,8 +179,9 @@ const cities = [
     categories: ["Laptops", "Electronics", "Optics"],
     topCategories: ["Laptop Assembly", "Electronics Components", "Precision Parts", "Optical Products", "Packaging"],
     description: "Laptop assembly hub. Precision electronics gateway.",
-    longDesc: "Historically produced one-third of world\u2019s laptops. Now a semiconductor and automotive electronics cluster. Gateway between Shanghai and Suzhou. Strong in precision manufacturing and electronic component supply chains.",
-    markets: ["Kunshan IT Zone \u2014 electronics assembly cluster", "Huaqiao Business Zone \u2014 trade services hub", "KTD Industrial Park \u2014 precision components"],
+    longDesc: "One-third of the world's laptops manufactured here — Foxconn, Luxshare, Compal, and MSI under one roof. Hundreds of CNC and precision manufacturers achieving accuracy to ±1μm. Giant and Shimano both chose Kunshan as their China manufacturing base. 2,360+ foreign companies from 51 countries.",
+    markets: ["昆山经济技术开发区 KETD Zone — 2,360+ foreign companies, electronics assembly", "昆山综合保税区 Kunshan Bonded Zone — Export manufacturing, duty-free", "昆山高新技术产业开发区 Hi-tech Zone — R&D, new materials, advanced manufacturing"],
+    marketImages: ["https://framerusercontent.com/images/tj5gUDn6yEYtGZ9RGzpd9Vmrkg.webp", "https://framerusercontent.com/images/LKzjqzPKxhAcvtxVGIxkVxQm8Hs.webp", "https://framerusercontent.com/images/4BYge7jk9ffj3qZBK07OllpxTL4.webp"],
     wfHook: "Convert and pay in CNY at transparent rates \u2014 see your costs before you send.",
     image: "images/kunshan.webp",
     hasDetail: false,
@@ -178,8 +192,9 @@ const cities = [
     categories: ["Optical Lenses", "Eyeglasses", "Tools"],
     topCategories: ["Optical Lenses", "Eyeglasses & Frames", "Hand Tools", "Hardware", "Chemical Products"],
     description: "China\u2019s optical lens capital. 75% of national output.",
-    longDesc: "Produces 75% of China\u2019s optical lenses and a significant share of the world\u2019s eyeglasses. Complete optical supply chain from raw materials to finished frames. Also a hub for hardware and hand tools.",
-    markets: ["Danyang Optical City \u2014 lenses and frames wholesale", "Yunyang Industrial Zone \u2014 tools and hardware", "China Eyeglasses Market \u2014 wholesale distribution"],
+    longDesc: "75% of China's lenses, 50% of the world's — 400 million spectacle lenses a year. 1,600+ enterprises including 600+ manufacturers. 100 million+ frames per year in metal, acetate, titanium, and TR90. Complete supply chain from raw materials to finished frames, with dramatic cost advantages versus European competitors.",
+    markets: ["丹阳国际眼镜城 Danyang Int'l Optical Center — 600+ shops, 6B+ yuan annual", "丹阳眼镜产业园 Danyang Eyewear Industrial Park — 600+ OEM/ODM factories", "司徒镇眼镜制造基地 Situ Town Manufacturing Zone — Lens grinding, coating"],
+    marketImages: ["https://framerusercontent.com/images/KBKIiATnnv2YkMaJVleURjMSI.webp", "https://framerusercontent.com/images/jUgoabTW6UmC6KmIrSIoees5yY.webp", "https://framerusercontent.com/images/bzqh5QdRpoeCM3JXmEpJ4jSl6EQ.webp"],
     wfHook: "Pay suppliers directly in CNY \u2014 no double conversion, no hidden bank markup.",
     image: "images/danyang.webp",
     hasDetail: false,
@@ -190,8 +205,9 @@ const cities = [
     categories: ["Smartphones", "Food", "Machinery"],
     topCategories: ["Smartphone Assembly", "Food Processing", "Textiles", "Machinery & Equipment", "Automotive Parts"],
     description: "Central China\u2019s logistics hub. iPhone assembly capital.",
-    longDesc: "Foxconn\u2019s largest campus assembles ~50% of the world\u2019s iPhones. Central China\u2019s rail and logistics crossroads. Major food processing and textile manufacturing base. Gateway to inland China\u2019s manufacturing capacity.",
-    markets: ["Zhongyuan \u2014 Central China\u2019s largest wholesale market", "Foxconn Zhengzhou \u2014 electronics assembly campus", "Jinshui Textile City \u2014 fabrics and garments"],
+    longDesc: "Foxconn's largest campus — 500,000 iPhones per day, roughly half the world's supply. China's #1 rail freight hub — CR Express to Hamburg in 15 days vs 36 by sea. China's breadbasket — #1 wheat province, frozen dumplings, instant noodles, and snack food capital.",
+    markets: ["郑州国际鞋城 Zhengzhou Int'l Shoes City — 2,500 merchants, 4B+ yuan annual", "火车站商圈 Railway Station Business District — Clothing wholesale hub", "银河万货城 Yinhe Wanhuo City — Toys, small commodities, household goods"],
+    marketImages: ["https://framerusercontent.com/images/NiVckMyDclowHlRfj3k06Um1LCU.webp", "https://framerusercontent.com/images/xySgMqodJBViAmT3MRptBftFDX4.webp", "https://framerusercontent.com/images/Wqh4U1nGGavUfQm1r9Yjt7sYcL0.webp"],
     wfHook: "Pay Chinese factories in seconds, not days \u2014 90% of WorldFirst payments arrive same day.",
     image: "images/zhengzhou.webp",
     hasDetail: false,
@@ -202,8 +218,9 @@ const cities = [
     categories: ["IT", "Aerospace", "Food"],
     topCategories: ["IT & Software", "Aerospace & Defence", "Biotech & Pharma", "Food & Agriculture", "Sichuan Ingredients"],
     description: "Western China\u2019s tech hub. 600+ companies in Tianfu Park.",
-    longDesc: "Tianfu Software Park: 600+ companies, 34 Fortune 500 tenants, 60,000 IT workers. Labour costs 30\u201340% below Beijing/Shanghai. FDA-certified pharma manufacturers. 6,500+ exhibitors at China Food & Drinks Fair. Sichuan spices and tea exports.",
-    markets: ["Hehuachi \u2014 Southwest China\u2019s largest wholesale", "Wukuaishi \u2014 Sichuan spices, tea, ingredients", "Kowloon Plaza \u2014 clothing, electronics, leather"],
+    longDesc: "Tianfu Software Park: 600+ companies, 34 Fortune 500 tenants, 60,000 IT workers. Labour costs 30–40% below Beijing/Shanghai. Tests half of global CPU production, manufactures 60% of iPads. FDA-certified peptide manufacturing. Sichuan peppercorns, doubanjiang, tea — the flavours behind one of China's Eight Great Cuisines.",
+    markets: ["荷花池批发市场 Hehuachi Wholesale Market — Largest in Southwest China", "五块石茶叶市场 Wukuaishi Tea & Spice Market — Tea, spices, dried goods", "九龙广场 Kowloon Plaza — 11 floors, clothing, electronics, leather"],
+    marketImages: ["https://framerusercontent.com/images/H8ycktxokaOK1sv7GNIhoRxOSRI.webp", "https://framerusercontent.com/images/5Rj0PcHzwqB3VdKrfksgWA2A7E4.webp", "https://framerusercontent.com/images/XJSK73wkzYsk6rBNM6t2tLD0ozk.webp"],
     wfHook: "Open a free World Account in minutes \u2014 collect, hold, and pay in 20+ currencies.",
     image: "images/chengdu.webp",
     hasDetail: false,
@@ -214,8 +231,9 @@ const cities = [
     categories: ["Auto", "Laptops", "Motorcycles"],
     topCategories: ["Automotive", "Laptop Manufacturing", "Motorcycles", "Chemical Products", "Food & Ingredients"],
     description: "Western manufacturing powerhouse. #1 motorcycle base.",
-    longDesc: "China\u2019s #1 motorcycle and major laptop production base. Western China\u2019s largest industrial city. Growing automotive cluster with 300+ parts manufacturers. Major inland port on the Yangtze River. Gateway to Belt and Road markets.",
-    markets: ["Chaotiamen \u2014 largest wholesale market in West China", "Auto Industrial Park \u2014 300+ parts manufacturers", "Nanping Trade Centre \u2014 electronics and machinery"],
+    longDesc: "Produces roughly 30% of the world's laptops — over 55 million units annually, #1 globally for seven consecutive years. Changan Automobile — one of China's 'Big Four' automakers — headquartered here. Four major motorcycle brands: Zongshen, Lifan, Loncin, Jialing. Hotpot condiments exported to 20+ countries.",
+    markets: ["朝天门批发市场 Chaotianmen Wholesale Market — 370,000 sqm, 15,000+ stalls", "盘溪批发市场 Panxi Wholesale Market — Spices, dried chilies, hotpot ingredients", "新重庆国际小商品批发中心 New Chongqing Small Commodity Center — Household goods"],
+    marketImages: ["https://framerusercontent.com/images/eziv9uHibhYQcxJuTYSDsZqDaM.webp", "https://framerusercontent.com/images/5OfuC5vU6YO3YbN6yNBA7OFZg.webp", "https://framerusercontent.com/images/AwpChuIbcevkncf2QAzx9TbqUQU.webp"],
     wfHook: "Send payments to multiple suppliers in one batch \u2014 save time with WorldFirst bulk payments.",
     image: "images/chongqing.webp",
     hasDetail: false,
@@ -226,8 +244,9 @@ const cities = [
     categories: ["Bicycles", "Strollers", "Castings"],
     topCategories: ["Bicycles & Parts", "Baby Strollers", "Auto Parts", "Castings & Hardware", "Fitness Equipment"],
     description: "Bicycle and baby stroller capital of China.",
-    longDesc: "Produces ~50% of China\u2019s baby strollers and a major share of bicycles and parts. Complete supply chain from raw materials to finished products. Also strong in castings, auto parts, and fitness equipment manufacturing.",
-    markets: ["Hejigou \u2014 bicycle parts wholesale hub", "Pingxiang Industrial Zone \u2014 stroller manufacturing cluster", "Hebei Hardware Market \u2014 castings and auto parts"],
+    longDesc: "145 million children's vehicles per year — 50% of China's domestic market, 40% of global output. 120,000+ workers across the county. Complete supply chain — every component produced locally. From budget umbrella strollers to smart strollers with GPS and app control.",
+    markets: ["河古庙镇工业区 Hegumiao Town Industrial Zone — Children's vehicle factories", "西庙村工厂集群 Ximiao Village Factory Cluster — Dense factory cluster", "平乡县工业区 Pingxiang County Industrial Area — Export-oriented factories"],
+    marketImages: ["https://framerusercontent.com/images/l3qjQRaUh87y2M4x481BKO7JGH4.webp", "https://framerusercontent.com/images/znuhmyAZT5uy8o9CKcOiFhlzoQ.webp", "https://framerusercontent.com/images/WBqEqanLzB6d613APXAk88SS30w.webp"],
     wfHook: "Verify supplier credentials before sending deposits \u2014 WorldFirst checks business and export licenses.",
     image: "images/pingxiang.webp",
     hasDetail: false,
@@ -238,8 +257,9 @@ const cities = [
     categories: ["Trade Services", "Jewelry", "Electronics"],
     topCategories: ["Trade Services & Logistics", "Jewelry & Watches", "Electronics", "Fashion & Design", "Financial Services"],
     description: "Free port. Zero tariffs. English-speaking trade gateway.",
-    longDesc: "Free port with zero tariffs, common law, and English-speaking business environment. World-class trade shows year-round at AsiaWorld-Expo and HKCEC. Quality assurance and inspection hub. Gateway between mainland Chinese factories and global buyers.",
-    markets: ["AsiaWorld-Expo \u2014 mega trade shows year-round", "Sham Shui Po \u2014 fabric and accessories wholesale", "HKCEC \u2014 electronics, jewelry, and gift fairs"],
+    longDesc: "Where sourcing deals are structured, not where products are made. Common law, English-language business environment, enforceable contracts. Free port — no customs tariffs, HKD pegged to USD, corporate tax at 16.5% with no VAT. Every major QC and inspection firm — SGS, Bureau Veritas, TUV, Intertek — operates from here.",
+    markets: ["香港会议展览中心 HKCEC — HKTDC trade fairs, sourcing events", "玉器市场 Jade Market — Jade, pearls, gemstones", "利時商場 Rise Shopping Arcade — Designer jewelry, accessories"],
+    marketImages: ["https://framerusercontent.com/images/BXs7lVUxuYy4u2HFhaOspxZHdk.webp", "https://framerusercontent.com/images/IwNKtcHvKd3quWmoFQDXwIRyqE.webp", "https://framerusercontent.com/images/0I78XJ2f1WwHSpS4hrCN1lknQ.webp"],
     wfHook: "Collect payments in HKD, convert to CNY at transparent rates \u2014 all from one World Account.",
     image: "images/hong-kong.webp",
     hasDetail: false,
@@ -283,7 +303,9 @@ const CITY_COUNT = cities.length;
 let cardWidth = 220;
 let scrollPos = 0;
 let scrollSpeed = 0.5; // pixels per frame
-let isPaused = false;
+let isDragging = false;
+let dragStartX = 0;
+let dragScrollStart = 0;
 let animFrame = null;
 
 // ═══════════════════════════════════════════════════════
@@ -340,50 +362,84 @@ function calcCardWidth() {
   });
 }
 
-// ── Continuous scroll animation ──
-let idleTimer = null;
-const IDLE_TIMEOUT = 10000; // 10 seconds of no mouse movement
-
+// ── Continuous scroll animation — never stops ──
 function continuousScroll() {
-  if (!isPaused) {
+  if (!isDragging) {
     scrollPos += scrollSpeed;
     const setWidth = CITY_COUNT * (cardWidth + GAP);
-    if (scrollPos >= setWidth) {
-      scrollPos -= setWidth;
-    }
+    if (scrollPos >= setWidth) scrollPos -= setWidth;
+    if (scrollPos < 0) scrollPos += setWidth;
     track.style.transform = `translateX(${-scrollPos}px)`;
   }
   animFrame = requestAnimationFrame(continuousScroll);
 }
 
-function pauseScroll() {
-  isPaused = true;
+// ── Arrow buttons — jump one card ──
+function jumpCard(direction) {
+  const step = cardWidth + GAP;
+  scrollPos += step * direction;
+  const setWidth = CITY_COUNT * (cardWidth + GAP);
+  if (scrollPos >= setWidth) scrollPos -= setWidth;
+  if (scrollPos < 0) scrollPos += setWidth;
+  track.style.transform = `translateX(${-scrollPos}px)`;
 }
 
-function resumeScroll() {
-  isPaused = false;
+// ── Drag / swipe support ──
+let dragMoved = false;
+
+function onDragStart(x) {
+  isDragging = true;
+  dragMoved = false;
+  dragStartX = x;
+  dragScrollStart = scrollPos;
+  wrapper.parentElement.classList.add("dragging");
 }
 
-// Reset idle timer on any mouse/touch activity
-function resetIdleTimer() {
-  pauseScroll();
-  clearTimeout(idleTimer);
-  idleTimer = setTimeout(resumeScroll, IDLE_TIMEOUT);
+function onDragMove(x) {
+  if (!isDragging) return;
+  const delta = dragStartX - x;
+  if (Math.abs(delta) > 5) dragMoved = true;
+  scrollPos = dragScrollStart + delta;
+  const setWidth = CITY_COUNT * (cardWidth + GAP);
+  if (scrollPos >= setWidth) scrollPos -= setWidth;
+  if (scrollPos < 0) scrollPos += setWidth;
+  track.style.transform = `translateX(${-scrollPos}px)`;
 }
 
-// ── Idle-based scroll: pause on any activity, resume after 10s idle ──
-function setupIdleScroll() {
-  // Any mouse movement or touch pauses, then resumes after 10s
-  document.addEventListener("mousemove", resetIdleTimer);
-  document.addEventListener("touchstart", resetIdleTimer, { passive: true });
-  document.addEventListener("click", resetIdleTimer);
-
-  // Start scrolling immediately (no mouse activity yet)
-  resumeScroll();
+function onDragEnd() {
+  isDragging = false;
+  wrapper.parentElement.classList.remove("dragging");
 }
 
-// ── Card Click ──
+function setupDrag() {
+  // Mouse drag
+  wrapper.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    onDragStart(e.clientX);
+  });
+  document.addEventListener("mousemove", (e) => {
+    if (isDragging) onDragMove(e.clientX);
+  });
+  document.addEventListener("mouseup", () => {
+    if (isDragging) onDragEnd();
+  });
+
+  // Touch drag
+  wrapper.addEventListener("touchstart", (e) => {
+    onDragStart(e.touches[0].clientX);
+  }, { passive: true });
+  document.addEventListener("touchmove", (e) => {
+    if (isDragging) onDragMove(e.touches[0].clientX);
+  }, { passive: true });
+  document.addEventListener("touchend", () => {
+    if (isDragging) onDragEnd();
+  });
+}
+
+// ── Card Click (ignore if drag occurred) ──
 function handleCardClick(e) {
+  if (dragMoved) return; // was a drag, not a tap
+
   const card = e.target.closest(".carousel-card");
   if (!card) return;
 
@@ -422,8 +478,6 @@ function renderCategories() {
 }
 
 function showCityView(city) {
-  stopAutoScroll();
-
   // Set background
   cityBg.style.backgroundImage = `url(${city.image})`;
 
@@ -437,8 +491,6 @@ function hideCityView() {
   cityView.classList.remove("active");
   mainView.classList.remove("exit-left");
   mainView.classList.add("active");
-
-  resetIdleTimer();
 }
 
 // ═══════════════════════════════════════════════════════
@@ -446,7 +498,6 @@ function hideCityView() {
 // ═══════════════════════════════════════════════════════
 
 function showCityModal(city) {
-  pauseScroll();
 
   modalBg.style.backgroundImage = `url(${city.image})`;
   modalName.textContent = city.name;
@@ -460,16 +511,15 @@ function showCityModal(city) {
   const marketsEl = document.getElementById("modal-markets");
   if (marketsEl && city.markets) {
     marketsEl.innerHTML = city.markets
-      .map((m) => {
+      .map((m, i) => {
         // Parse "Name — Detail" format
-        const parts = m.split(" \u2014 ");
+        const parts = m.split(" — ");
         const name = parts[0] || m;
         const detail = parts[1] || "";
+        const imgUrl = (city.marketImages && city.marketImages[i]) || "";
         return `
         <div class="market-card">
-          <div class="market-card-img" style="background-image: url(${city.image})">
-            <div class="market-card-img-overlay"></div>
-          </div>
+          ${imgUrl ? `<div class="market-card-img" style="background-image: url(${imgUrl})"></div>` : ""}
           <div class="market-card-body">
             <div class="market-card-name">${name}</div>
             ${detail ? `<div class="market-card-detail">${detail}</div>` : ""}
@@ -493,7 +543,6 @@ function showCityModal(city) {
 
 function hideCityModal() {
   modal.classList.remove("active");
-  resumeScroll();
 }
 
 // ═══════════════════════════════════════════════════════
@@ -509,9 +558,13 @@ function init() {
   scrollPos = CITY_COUNT * (cardWidth + GAP);
   track.style.transform = `translateX(${-scrollPos}px)`;
 
-  // Setup interactions
-  setupIdleScroll();
+  // Setup drag and interactions
+  setupDrag();
   track.addEventListener("click", handleCardClick);
+
+  // Arrow buttons
+  document.getElementById("nav-left").addEventListener("click", () => jumpCard(-1));
+  document.getElementById("nav-right").addEventListener("click", () => jumpCard(1));
 
   // City view
   backBtn.addEventListener("click", hideCityView);
@@ -532,6 +585,8 @@ function init() {
       if (e.key === "Escape" || e.key === "Backspace") hideCityView();
       return;
     }
+    if (e.key === "ArrowLeft") jumpCard(-1);
+    if (e.key === "ArrowRight") jumpCard(1);
   });
 
   // Resize
@@ -544,7 +599,7 @@ function init() {
     }, 150);
   });
 
-  // Start continuous animation
+  // Start continuous animation — never stops
   continuousScroll();
 }
 
